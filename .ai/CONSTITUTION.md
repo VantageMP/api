@@ -45,6 +45,8 @@ This document establishes the strict quality, style, and architectural rules for
 ## 5. Formatting and Logs
 
 - **Formatting:** Strictly use `bun run lint`. Aesthetic discussions outside the official standard defined in the project tools (Biome) will not be accepted.
+- Structured JSON when logging for debugging / observability.
+- Plain text only for user-facing CLI output.
 
 ## 6. XML Serialization
 

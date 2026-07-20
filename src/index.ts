@@ -5,7 +5,6 @@ import { fromXml } from "./utils/xml";
 
 const app = new Elysia()
 	.use(openapi())
-
 	.onParse(async ({ request, headers }) => {
 		const contentType = headers["content-type"] ?? "";
 

@@ -13,9 +13,10 @@ const parser = new XMLParser({
 	attributeNamePrefix: "@_",
 });
 
-export function toXml(data: Record<string, unknown>): Response {
+export function toXml(data: Record<string, unknown>, status = 200): Response {
 	const xmlString = builder.build(data);
 	return new Response(xmlString, {
+		status,
 		headers: { "content-type": "application/xml; charset=utf-8" },
 	});
 }

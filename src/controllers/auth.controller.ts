@@ -1,9 +1,42 @@
 import type { Context } from "elysia";
-import { getPermanentSessionSchema } from "@/models/schema/auth.schema";
+import {
+	createUserSchema,
+	getPermanentSessionSchema,
+} from "@/models/schema/auth.schema";
 import * as authService from "@/services/auth.service";
 import { toXml } from "@/utils/xml";
 
-export async function GetPermanentSession(ctx: Context) {
+export const createUser = async (ctx: Context) => {
+	const input = createUserSchema.parse(ctx.query);
+
+	try {
+		const result = await authService.createUser(input);
+
+		return toXml({
+			LoginStatusVO: {
+				UserId: result.userId,
+				LoginToken: result.loginToken,
+				Description: "",
+			},
+		});
+	} catch (err) {
+		console.error(err);
+		if (
+			err instanceof Error &&
+			err.message === "EMAIL_ALREADY_REGISTERED"
+		) {
+			return toXml({
+				LoginStatusVO: {
+					UserId: 0,
+					LoginToken: "",
+					Description: "You are already registered!",
+				},
+			});
+		}
+	}
+};
+
+export const GetPermanentSession = async (ctx: Context) => {
 	const parsed = getPermanentSessionSchema.parse(ctx.body);
 	const { machineID, version } = parsed.GetPermanentSessionData;
 
@@ -32,7 +65,7 @@ export async function GetPermanentSession(ctx: Context) {
 			},
 		},
 	});
-}
+};
 
 export async function SecureLoginPersona() {}
 export async function SecureLogout() {}

@@ -2,374 +2,374 @@ import { defineRelations } from "drizzle-orm";
 import * as schema from "./schema";
 
 export const relations = defineRelations(schema, (r) => ({
-	achievement: {
-		badgeDefinition: r.one.badgeDefinition({
-			from: r.achievement.badgeDefinitionId,
-			to: r.badgeDefinition.id,
+	achievementTable: {
+		badgeDefinition: r.one.badgeDefinitionTable({
+			from: r.achievementTable.badgeDefinitionId,
+			to: r.badgeDefinitionTable.id,
 		}),
-		achievementRanks: r.many.achievementRank(),
-		personas: r.many.persona({
-			from: r.achievement.id.through(r.personaAchievement.achievementId),
-			to: r.persona.id.through(r.personaAchievement.personaId),
-		}),
-	},
-	badgeDefinition: {
-		achievements: r.many.achievement(),
-		personas: r.many.persona({
-			from: r.badgeDefinition.id.through(r.personaBadge.badgeDefinitionId),
-			to: r.persona.id.through(r.personaBadge.personaId),
+		achievementRanks: r.many.achievementRankTable(),
+		personas: r.many.personaTable({
+			from: r.achievementTable.id.through(r.personaAchievementTable.achievementId),
+			to: r.personaTable.id.through(r.personaAchievementTable.personaId),
 		}),
 	},
-	achievementRank: {
-		achievement: r.one.achievement({
-			from: r.achievementRank.achievementId,
-			to: r.achievement.id,
-		}),
-		personaAchievements: r.many.personaAchievement({
-			from: r.achievementRank.id.through(r.personaAchievementRank.achievementRankId),
-			to: r.personaAchievement.id.through(r.personaAchievementRank.personaAchievementId),
+	badgeDefinitionTable: {
+		achievements: r.many.achievementTable(),
+		personas: r.many.personaTable({
+			from: r.badgeDefinitionTable.id.through(r.personaBadgeTable.badgeDefinitionId),
+			to: r.personaTable.id.through(r.personaBadgeTable.personaId),
 		}),
 	},
-	persona: {
-		users: r.many.user({
-			from: r.persona.id.through(r.ban.bannedById),
-			to: r.user.id.through(r.ban.userId),
+	achievementRankTable: {
+		achievement: r.one.achievementTable({
+			from: r.achievementRankTable.achievementId,
+			to: r.achievementTable.id,
+		}),
+		personaAchievements: r.many.personaAchievementTable({
+			from: r.achievementRankTable.id.through(r.personaAchievementRankTable.achievementRankId),
+			to: r.personaAchievementTable.id.through(r.personaAchievementRankTable.personaAchievementId),
+		}),
+	},
+	personaTable: {
+		users: r.many.userTable({
+			from: r.personaTable.id.through(r.banTable.bannedById),
+			to: r.userTable.id.through(r.banTable.userId),
 			alias: "persona_id_user_id_via_ban",
 		}),
-		cars: r.many.car(),
-		user: r.one.user({
-			from: r.persona.userid,
-			to: r.user.id,
+		cars: r.many.carTable(),
+		user: r.one.userTable({
+			from: r.personaTable.userid,
+			to: r.userTable.id,
 			alias: "persona_userid_user_id",
 		}),
-		eventData: r.many.eventData(),
-		inventories: r.many.inventory(),
-		lobbies: r.many.lobby(),
-		achievements: r.many.achievement(),
-		badgeDefinitions: r.many.badgeDefinition(),
-		giftCodes: r.many.giftCode(),
-		socialRelationships: r.many.socialRelationship(),
-		treasureHunts: r.many.treasureHunt(),
-		eventSessions: r.many.eventSession(),
+		eventData: r.many.eventDataTable(),
+		inventories: r.many.inventoryTable(),
+		lobbies: r.many.lobbyTable(),
+		achievements: r.many.achievementTable(),
+		badgeDefinitions: r.many.badgeDefinitionTable(),
+		giftCodes: r.many.giftCodeTable(),
+		socialRelationships: r.many.socialRelationshipTable(),
+		treasureHunts: r.many.treasureHuntTable(),
+		eventSessions: r.many.eventSessionTable(),
 	},
-	user: {
-		personasViaBan: r.many.persona({
+	userTable: {
+		personasViaBan: r.many.personaTable({
 			alias: "persona_id_user_id_via_ban",
 		}),
-		personasUserid: r.many.persona({
+		personasUserid: r.many.personaTable({
 			alias: "persona_userid_user_id",
 		}),
-		inviteTickets: r.many.inviteTicket(),
-		promoCodes: r.many.promoCode(),
-		socialRelationshipsFromUserId: r.many.socialRelationship({
+		inviteTickets: r.many.inviteTicketTable(),
+		promoCodes: r.many.promoCodeTable(),
+		socialRelationshipsFromUserId: r.many.socialRelationshipTable({
 			alias: "socialRelationship_fromUserId_user_id",
 		}),
-		socialRelationshipsUserId: r.many.socialRelationship({
+		socialRelationshipsUserId: r.many.socialRelationshipTable({
 			alias: "socialRelationship_userId_user_id",
 		}),
 	},
-	car: {
-		persona: r.one.persona({
-			from: r.car.personaId,
-			to: r.persona.id,
+	carTable: {
+		persona: r.one.personaTable({
+			from: r.carTable.personaId,
+			to: r.personaTable.id,
 		}),
-		paints: r.many.paint(),
-		performanceparts: r.many.performancepart(),
-		skillmodparts: r.many.skillmodpart(),
-		vinyls: r.many.vinyl(),
-		visualparts: r.many.visualpart(),
+		paints: r.many.paintTable(),
+		performanceparts: r.many.performancepartTable(),
+		skillmodparts: r.many.skillmodpartTable(),
+		vinyls: r.many.vinylTable(),
+		visualparts: r.many.visualpartTable(),
 	},
-	cardPackItem: {
-		cardPack: r.one.cardPack({
-			from: r.cardPackItem.cardPackEntityID,
-			to: r.cardPack.id,
+	cardPackItemTable: {
+		cardPack: r.one.cardPackTable({
+			from: r.cardPackItemTable.cardPackEntityID,
+			to: r.cardPackTable.id,
 		}),
 	},
-	cardPack: {
-		cardPackItems: r.many.cardPackItem(),
+	cardPackTable: {
+		cardPackItems: r.many.cardPackItemTable(),
 	},
-	event: {
-		eventRewardMultiplayerRewardConfigId: r.one.eventReward({
-			from: r.event.multiplayerRewardConfigId,
-			to: r.eventReward.id,
+	eventTable: {
+		eventRewardMultiplayerRewardConfigId: r.one.eventRewardTable({
+			from: r.eventTable.multiplayerRewardConfigId,
+			to: r.eventRewardTable.id,
 			alias: "event_multiplayerRewardConfigId_eventReward_id",
 		}),
-		eventRewardPrivateRewardConfigId: r.one.eventReward({
-			from: r.event.privateRewardConfigId,
-			to: r.eventReward.id,
+		eventRewardPrivateRewardConfigId: r.one.eventRewardTable({
+			from: r.eventTable.privateRewardConfigId,
+			to: r.eventRewardTable.id,
 			alias: "event_privateRewardConfigId_eventReward_id",
 		}),
-		eventRewardSingleplayerRewardConfigId: r.one.eventReward({
-			from: r.event.singleplayerRewardConfigId,
-			to: r.eventReward.id,
+		eventRewardSingleplayerRewardConfigId: r.one.eventRewardTable({
+			from: r.eventTable.singleplayerRewardConfigId,
+			to: r.eventRewardTable.id,
 			alias: "event_singleplayerRewardConfigId_eventReward_id",
 		}),
-		eventData: r.many.eventData(),
-		eventSessions: r.many.eventSession(),
-		lobbies: r.many.lobby(),
+		eventData: r.many.eventDataTable(),
+		eventSessions: r.many.eventSessionTable(),
+		lobbies: r.many.lobbyTable(),
 	},
-	eventReward: {
-		eventsMultiplayerRewardConfigId: r.many.event({
+	eventRewardTable: {
+		eventsMultiplayerRewardConfigId: r.many.eventTable({
 			alias: "event_multiplayerRewardConfigId_eventReward_id",
 		}),
-		eventsPrivateRewardConfigId: r.many.event({
+		eventsPrivateRewardConfigId: r.many.eventTable({
 			alias: "event_privateRewardConfigId_eventReward_id",
 		}),
-		eventsSingleplayerRewardConfigId: r.many.event({
+		eventsSingleplayerRewardConfigId: r.many.eventTable({
 			alias: "event_singleplayerRewardConfigId_eventReward_id",
 		}),
-		rewardTableRewardTableRank1Id: r.one.rewardTable({
-			from: r.eventReward.rewardTableRank1Id,
-			to: r.rewardTable.id,
+		rewardTableRewardTableRank1Id: r.one.rewardTableTable({
+			from: r.eventRewardTable.rewardTableRank1Id,
+			to: r.rewardTableTable.id,
 			alias: "eventReward_rewardTableRank1Id_rewardTable_id",
 		}),
-		rewardTableRewardTableRank2Id: r.one.rewardTable({
-			from: r.eventReward.rewardTableRank2Id,
-			to: r.rewardTable.id,
+		rewardTableRewardTableRank2Id: r.one.rewardTableTable({
+			from: r.eventRewardTable.rewardTableRank2Id,
+			to: r.rewardTableTable.id,
 			alias: "eventReward_rewardTableRank2Id_rewardTable_id",
 		}),
-		rewardTableRewardTableRank3Id: r.one.rewardTable({
-			from: r.eventReward.rewardTableRank3Id,
-			to: r.rewardTable.id,
+		rewardTableRewardTableRank3Id: r.one.rewardTableTable({
+			from: r.eventRewardTable.rewardTableRank3Id,
+			to: r.rewardTableTable.id,
 			alias: "eventReward_rewardTableRank3Id_rewardTable_id",
 		}),
-		rewardTableRewardTableRank4Id: r.one.rewardTable({
-			from: r.eventReward.rewardTableRank4Id,
-			to: r.rewardTable.id,
+		rewardTableRewardTableRank4Id: r.one.rewardTableTable({
+			from: r.eventRewardTable.rewardTableRank4Id,
+			to: r.rewardTableTable.id,
 			alias: "eventReward_rewardTableRank4Id_rewardTable_id",
 		}),
-		rewardTableRewardTableRank5Id: r.one.rewardTable({
-			from: r.eventReward.rewardTableRank5Id,
-			to: r.rewardTable.id,
+		rewardTableRewardTableRank5Id: r.one.rewardTableTable({
+			from: r.eventRewardTable.rewardTableRank5Id,
+			to: r.rewardTableTable.id,
 			alias: "eventReward_rewardTableRank5Id_rewardTable_id",
 		}),
-		rewardTableRewardTableRank6Id: r.one.rewardTable({
-			from: r.eventReward.rewardTableRank6Id,
-			to: r.rewardTable.id,
+		rewardTableRewardTableRank6Id: r.one.rewardTableTable({
+			from: r.eventRewardTable.rewardTableRank6Id,
+			to: r.rewardTableTable.id,
 			alias: "eventReward_rewardTableRank6Id_rewardTable_id",
 		}),
-		rewardTableRewardTableRank7Id: r.one.rewardTable({
-			from: r.eventReward.rewardTableRank7Id,
-			to: r.rewardTable.id,
+		rewardTableRewardTableRank7Id: r.one.rewardTableTable({
+			from: r.eventRewardTable.rewardTableRank7Id,
+			to: r.rewardTableTable.id,
 			alias: "eventReward_rewardTableRank7Id_rewardTable_id",
 		}),
-		rewardTableRewardTableRank8Id: r.one.rewardTable({
-			from: r.eventReward.rewardTableRank8Id,
-			to: r.rewardTable.id,
+		rewardTableRewardTableRank8Id: r.one.rewardTableTable({
+			from: r.eventRewardTable.rewardTableRank8Id,
+			to: r.rewardTableTable.id,
 			alias: "eventReward_rewardTableRank8Id_rewardTable_id",
 		}),
 	},
-	eventData: {
-		event: r.one.event({
-			from: r.eventData.eventid,
-			to: r.event.id,
+	eventDataTable: {
+		event: r.one.eventTable({
+			from: r.eventDataTable.eventid,
+			to: r.eventTable.id,
 		}),
-		eventSession: r.one.eventSession({
-			from: r.eventData.eventSessionId,
-			to: r.eventSession.id,
+		eventSession: r.one.eventSessionTable({
+			from: r.eventDataTable.eventSessionId,
+			to: r.eventSessionTable.id,
 		}),
-		persona: r.one.persona({
-			from: r.eventData.personaId,
-			to: r.persona.id,
+		persona: r.one.personaTable({
+			from: r.eventDataTable.personaId,
+			to: r.personaTable.id,
 		}),
 	},
-	eventSession: {
-		eventData: r.many.eventData(),
-		event: r.one.event({
-			from: r.eventSession.eventid,
-			to: r.event.id,
+	eventSessionTable: {
+		eventData: r.many.eventDataTable(),
+		event: r.one.eventTable({
+			from: r.eventSessionTable.eventid,
+			to: r.eventTable.id,
 		}),
-		lobbyLobbyid: r.one.lobby({
-			from: r.eventSession.lobbyid,
-			to: r.lobby.id,
+		lobbyLobbyid: r.one.lobbyTable({
+			from: r.eventSessionTable.lobbyid,
+			to: r.lobbyTable.id,
 			alias: "eventSession_lobbyid_lobby_id",
 		}),
-		lobbyNextlobbyid: r.one.lobby({
-			from: r.eventSession.nextlobbyid,
-			to: r.lobby.id,
+		lobbyNextlobbyid: r.one.lobbyTable({
+			from: r.eventSessionTable.nextlobbyid,
+			to: r.lobbyTable.id,
 			alias: "eventSession_nextlobbyid_lobby_id",
 		}),
-		personas: r.many.persona({
-			from: r.eventSession.id.through(r.usedPowerup.eventSessionId),
-			to: r.persona.id.through(r.usedPowerup.personaId),
+		personas: r.many.personaTable({
+			from: r.eventSessionTable.id.through(r.usedPowerupTable.eventSessionId),
+			to: r.personaTable.id.through(r.usedPowerupTable.personaId),
 		}),
 	},
-	rewardTable: {
-		eventRewardsRewardTableRank1Id: r.many.eventReward({
+	rewardTableTable: {
+		eventRewardsRewardTableRank1Id: r.many.eventRewardTable({
 			alias: "eventReward_rewardTableRank1Id_rewardTable_id",
 		}),
-		eventRewardsRewardTableRank2Id: r.many.eventReward({
+		eventRewardsRewardTableRank2Id: r.many.eventRewardTable({
 			alias: "eventReward_rewardTableRank2Id_rewardTable_id",
 		}),
-		eventRewardsRewardTableRank3Id: r.many.eventReward({
+		eventRewardsRewardTableRank3Id: r.many.eventRewardTable({
 			alias: "eventReward_rewardTableRank3Id_rewardTable_id",
 		}),
-		eventRewardsRewardTableRank4Id: r.many.eventReward({
+		eventRewardsRewardTableRank4Id: r.many.eventRewardTable({
 			alias: "eventReward_rewardTableRank4Id_rewardTable_id",
 		}),
-		eventRewardsRewardTableRank5Id: r.many.eventReward({
+		eventRewardsRewardTableRank5Id: r.many.eventRewardTable({
 			alias: "eventReward_rewardTableRank5Id_rewardTable_id",
 		}),
-		eventRewardsRewardTableRank6Id: r.many.eventReward({
+		eventRewardsRewardTableRank6Id: r.many.eventRewardTable({
 			alias: "eventReward_rewardTableRank6Id_rewardTable_id",
 		}),
-		eventRewardsRewardTableRank7Id: r.many.eventReward({
+		eventRewardsRewardTableRank7Id: r.many.eventRewardTable({
 			alias: "eventReward_rewardTableRank7Id_rewardTable_id",
 		}),
-		eventRewardsRewardTableRank8Id: r.many.eventReward({
+		eventRewardsRewardTableRank8Id: r.many.eventRewardTable({
 			alias: "eventReward_rewardTableRank8Id_rewardTable_id",
 		}),
-		rewardTableItems: r.many.rewardTableItem(),
-		treasureHuntConfigs: r.many.treasureHuntConfig(),
+		rewardTableItems: r.many.rewardTableItemTable(),
+		treasureHuntConfigs: r.many.treasureHuntConfigTable(),
 	},
-	lobby: {
-		eventSessionsLobbyid: r.many.eventSession({
+	lobbyTable: {
+		eventSessionsLobbyid: r.many.eventSessionTable({
 			alias: "eventSession_lobbyid_lobby_id",
 		}),
-		eventSessionsNextlobbyid: r.many.eventSession({
+		eventSessionsNextlobbyid: r.many.eventSessionTable({
 			alias: "eventSession_nextlobbyid_lobby_id",
 		}),
-		event: r.one.event({
-			from: r.lobby.eventid,
-			to: r.event.id,
+		event: r.one.eventTable({
+			from: r.lobbyTable.eventid,
+			to: r.eventTable.id,
 		}),
-		personas: r.many.persona({
-			from: r.lobby.id.through(r.lobbyEntrant.lobbyid),
-			to: r.persona.id.through(r.lobbyEntrant.personaid),
-		}),
-	},
-	inventory: {
-		persona: r.one.persona({
-			from: r.inventory.personaId,
-			to: r.persona.id,
-		}),
-		products: r.many.product({
-			from: r.inventory.id.through(r.inventoryItem.inventoryEntityId),
-			to: r.product.productId.through(r.inventoryItem.productId),
+		personas: r.many.personaTable({
+			from: r.lobbyTable.id.through(r.lobbyEntrantTable.lobbyid),
+			to: r.personaTable.id.through(r.lobbyEntrantTable.personaid),
 		}),
 	},
-	inviteTicket: {
-		user: r.one.user({
-			from: r.inviteTicket.userid,
-			to: r.user.id,
+	inventoryTable: {
+		persona: r.one.personaTable({
+			from: r.inventoryTable.personaId,
+			to: r.personaTable.id,
+		}),
+		products: r.many.productTable({
+			from: r.inventoryTable.id.through(r.inventoryItemTable.inventoryEntityId),
+			to: r.productTable.productId.through(r.inventoryItemTable.productId),
 		}),
 	},
-	paint: {
-		car: r.one.car({
-			from: r.paint.carId,
-			to: r.car.id,
+	inviteTicketTable: {
+		user: r.one.userTable({
+			from: r.inviteTicketTable.userid,
+			to: r.userTable.id,
 		}),
 	},
-	amplifiers: {
-		product: r.one.product({
-			from: r.amplifiers.productId,
-			to: r.product.productId,
+	paintTable: {
+		car: r.one.carTable({
+			from: r.paintTable.carId,
+			to: r.carTable.id,
 		}),
 	},
-	product: {
-		amplifiers: r.many.amplifiers(),
-		basketdefinitions: r.one.basketdefinition(),
-		giftCodes: r.many.giftCode(),
-		inventories: r.many.inventory(),
-		product: r.one.product({
-			from: r.product.parentProductId,
-			to: r.product.id,
+	amplifiersTable: {
+		product: r.one.productTable({
+			from: r.amplifiersTable.productId,
+			to: r.productTable.productId,
+		}),
+	},
+	productTable: {
+		amplifiers: r.many.amplifiersTable(),
+		basketdefinitions: r.one.basketdefinitionTable(),
+		giftCodes: r.many.giftCodeTable(),
+		inventories: r.many.inventoryTable(),
+		product: r.one.productTable({
+			from: r.productTable.parentProductId,
+			to: r.productTable.id,
 			alias: "product_parentProductId_product_id",
 		}),
-		products: r.many.product({
+		products: r.many.productTable({
 			alias: "product_parentProductId_product_id",
 		}),
 	},
-	basketdefinition: {
-		product: r.one.product({
-			from: r.basketdefinition.productId,
-			to: r.product.productId,
+	basketdefinitionTable: {
+		product: r.one.productTable({
+			from: r.basketdefinitionTable.productId,
+			to: r.productTable.productId,
 		}),
 	},
-	giftCode: {
-		product: r.one.product({
-			from: r.giftCode.productId,
-			to: r.product.productId,
+	giftCodeTable: {
+		product: r.one.productTable({
+			from: r.giftCodeTable.productId,
+			to: r.productTable.productId,
 		}),
-		personas: r.many.persona({
-			from: r.giftCode.code.through(r.personaGift.code),
-			to: r.persona.id.through(r.personaGift.personaId),
-		}),
-	},
-	performancepart: {
-		car: r.one.car({
-			from: r.performancepart.carId,
-			to: r.car.id,
+		personas: r.many.personaTable({
+			from: r.giftCodeTable.code.through(r.personaGiftTable.code),
+			to: r.personaTable.id.through(r.personaGiftTable.personaId),
 		}),
 	},
-	personaAchievement: {
-		achievementRanks: r.many.achievementRank(),
-	},
-	promoCode: {
-		user: r.one.user({
-			from: r.promoCode.userid,
-			to: r.user.id,
+	performancepartTable: {
+		car: r.one.carTable({
+			from: r.performancepartTable.carId,
+			to: r.carTable.id,
 		}),
 	},
-	rewardTableItem: {
-		rewardTable: r.one.rewardTable({
-			from: r.rewardTableItem.rewardTableEntityID,
-			to: r.rewardTable.id,
+	personaAchievementTable: {
+		achievementRanks: r.many.achievementRankTable(),
+	},
+	promoCodeTable: {
+		user: r.one.userTable({
+			from: r.promoCodeTable.userid,
+			to: r.userTable.id,
 		}),
 	},
-	skillmodpart: {
-		car: r.one.car({
-			from: r.skillmodpart.carId,
-			to: r.car.id,
+	rewardTableItemTable: {
+		rewardTable: r.one.rewardTableTable({
+			from: r.rewardTableItemTable.rewardTableEntityID,
+			to: r.rewardTableTable.id,
 		}),
 	},
-	socialRelationship: {
-		persona: r.one.persona({
-			from: r.socialRelationship.remotePersonaId,
-			to: r.persona.id,
+	skillmodpartTable: {
+		car: r.one.carTable({
+			from: r.skillmodpartTable.carId,
+			to: r.carTable.id,
 		}),
-		userFromUserId: r.one.user({
-			from: r.socialRelationship.fromUserId,
-			to: r.user.id,
+	},
+	socialRelationshipTable: {
+		persona: r.one.personaTable({
+			from: r.socialRelationshipTable.remotePersonaId,
+			to: r.personaTable.id,
+		}),
+		userFromUserId: r.one.userTable({
+			from: r.socialRelationshipTable.fromUserId,
+			to: r.userTable.id,
 			alias: "socialRelationship_fromUserId_user_id",
 		}),
-		userUserId: r.one.user({
-			from: r.socialRelationship.userId,
-			to: r.user.id,
+		userUserId: r.one.userTable({
+			from: r.socialRelationshipTable.userId,
+			to: r.userTable.id,
 			alias: "socialRelationship_userId_user_id",
 		}),
 	},
-	treasureHunt: {
-		persona: r.one.persona({
-			from: r.treasureHunt.personaId,
-			to: r.persona.id,
+	treasureHuntTable: {
+		persona: r.one.personaTable({
+			from: r.treasureHuntTable.personaId,
+			to: r.personaTable.id,
 		}),
 	},
-	treasureHuntConfig: {
-		rewardTable: r.one.rewardTable({
-			from: r.treasureHuntConfig.rewardTableId,
-			to: r.rewardTable.id,
+	treasureHuntConfigTable: {
+		rewardTable: r.one.rewardTableTable({
+			from: r.treasureHuntConfigTable.rewardTableId,
+			to: r.rewardTableTable.id,
 		}),
 	},
-	vinyl: {
-		car: r.one.car({
-			from: r.vinyl.carId,
-			to: r.car.id,
+	vinylTable: {
+		car: r.one.carTable({
+			from: r.vinylTable.carId,
+			to: r.carTable.id,
 		}),
 	},
-	vinylproduct: {
-		category: r.one.category({
-			from: r.vinylproduct.parentCategoryId,
-			to: r.category.idcategory,
+	vinylproductTable: {
+		category: r.one.categoryTable({
+			from: r.vinylproductTable.parentCategoryId,
+			to: r.categoryTable.idcategory,
 		}),
 	},
-	category: {
-		vinylproducts: r.many.vinylproduct(),
+	categoryTable: {
+		vinylproducts: r.many.vinylproductTable(),
 	},
-	visualpart: {
-		car: r.one.car({
-			from: r.visualpart.carId,
-			to: r.car.id,
+	visualpartTable: {
+		car: r.one.carTable({
+			from: r.visualpartTable.carId,
+			to: r.carTable.id,
 		}),
 	},
 }));

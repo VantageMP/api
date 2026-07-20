@@ -1,4 +1,3 @@
-// models/schemas/auth.schema.ts
 import { z } from "zod";
 
 export const getPermanentSessionSchema = z.object({
@@ -10,4 +9,12 @@ export const getPermanentSessionSchema = z.object({
 	}),
 });
 
+export const createUserSchema = z.object({
+	email: z.email(),
+	password: z.string(),
+	// inviteTicket: z.string().nullable(),
+});
+
 export type GetPermanentSessionInput = z.infer<typeof getPermanentSessionSchema>;
+
+export type CreateUserInput = z.infer<typeof createUserSchema>;

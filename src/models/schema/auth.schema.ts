@@ -12,7 +12,7 @@ export const getPermanentSessionSchema = z.object({
 export const createUserSchema = z.object({
 	email: z.email(),
 	password: z.string(),
-	// inviteTicket: z.string().nullable(),
+	// ticket: z.string().nullable(),
 });
 
 export type GetPermanentSessionInput = z.infer<typeof getPermanentSessionSchema>;

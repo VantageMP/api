@@ -1,38 +1,36 @@
 import type { Context } from "elysia";
-import {
-	createUserSchema,
-	getPermanentSessionSchema,
-} from "@/models/schema/auth.schema";
+import { createUserSchema, getPermanentSessionSchema } from "@/models/schema/auth.schema";
 import * as authService from "@/services/auth.service";
 import { toXml } from "@/utils/xml";
 
+function validateMediaType(ctx: Context) {
+	const contentType = ctx.headers["content-type"] ?? "";
+
+	if (!contentType.includes("application/json")) {
+		ctx.set.status = 415;
+		return { message: "Unsupported Media Type" };
+	}
+}
+
 export const createUser = async (ctx: Context) => {
-	const input = createUserSchema.parse(ctx.query);
+	validateMediaType(ctx);
+	const input = createUserSchema.parse(ctx.body);
+	await authService.createUser(input);
+
+	return {
+		message: "Account created! You can now log in.",
+	};
+};
+
+export const authenticateUser = async (ctx: Context) => {
+	validateMediaType(ctx);
+
+	const input = createUserSchema.parse(ctx.body);
 
 	try {
-		const result = await authService.createUser(input);
-
-		return toXml({
-			LoginStatusVO: {
-				UserId: result.userId,
-				LoginToken: result.loginToken,
-				Description: "",
-			},
-		});
+		const user = authService.authenticateUser(input);
 	} catch (err) {
-		console.error(err);
-		if (
-			err instanceof Error &&
-			err.message === "EMAIL_ALREADY_REGISTERED"
-		) {
-			return toXml({
-				LoginStatusVO: {
-					UserId: 0,
-					LoginToken: "",
-					Description: "You are already registered!",
-				},
-			});
-		}
+		console.log(err);
 	}
 };
 

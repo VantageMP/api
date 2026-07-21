@@ -1,7 +1,8 @@
 export async function hashPassword(password: string) {
 	const hash = await Bun.password.hash(password, {
-		algorithm: "bcrypt",
-		cost: 10,
+		algorithm: "argon2id",
+		memoryCost: 15625,
+		timeCost: 10,
 	});
 
 	return hash;

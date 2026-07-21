@@ -45,9 +45,7 @@ export const achievementTable = mysqlTable(
 	},
 	(table) => [
 		index("ACHIEVEMENT_category_index").on(table.category),
-		uniqueIndex("UK_ACHIEVEMENT_badge_definition_id").on(
-			table.badgeDefinitionId,
-		),
+		uniqueIndex("UK_ACHIEVEMENT_badge_definition_id").on(table.badgeDefinitionId),
 	],
 );
 
@@ -99,19 +97,13 @@ export const banTable = mysqlTable(
 		endsAt: datetime("ends_at"),
 		reason: varchar({ length: 255 }),
 		type: varchar({ length: 255 }),
-		userId: bigint("user_id", { mode: "number" }).references(
-			() => userTable.id,
-			{
-				onDelete: "cascade",
-			},
-		),
+		userId: bigint("user_id", { mode: "number" }).references(() => userTable.id, {
+			onDelete: "cascade",
+		}),
 		started: datetime(),
-		bannedById: bigint("banned_by_id", { mode: "number" }).references(
-			() => personaTable.id,
-			{
-				onDelete: "cascade",
-			},
-		),
+		bannedById: bigint("banned_by_id", { mode: "number" }).references(() => personaTable.id, {
+			onDelete: "cascade",
+		}),
 		active: boolean().default(true),
 	},
 	(table) => [
@@ -238,12 +230,9 @@ export const personaTable = mysqlTable(
 		rep: double().notNull(),
 		repAtCurrentLevel: int().notNull(),
 		score: int().notNull(),
-		userid: bigint("USERID", { mode: "number" }).references(
-			() => userTable.id,
-			{
-				onDelete: "cascade",
-			},
-		),
+		userid: bigint("USERID", { mode: "number" }).references(() => userTable.id, {
+			onDelete: "cascade",
+		}),
 		created: datetime(),
 		badges: varchar({ length: 2048 }),
 		firstLogin: datetime("first_login"),
@@ -269,18 +258,12 @@ export const eventTable = mysqlTable(
 		name: varchar({ length: 255 }),
 		carClassHash: int().notNull(),
 		trackLength: float().notNull(),
-		isRotationEnabled: customType({ dataType: () => "bit(1)" })().default(
-			"b'0'",
-		),
+		isRotationEnabled: customType({ dataType: () => "bit(1)" })().default("b'0'"),
 		dnfTimerTime: int().default(60000),
 		lobbyCountdownTime: int().default(60000),
 		legitTime: bigint({ mode: "number" }).default(0),
-		isDnfEnabled: customType({ dataType: () => "bit(1)" })().default(
-			"b'1'",
-		),
-		isRaceAgainEnabled: customType({ dataType: () => "bit(1)" })().default(
-			"b'1'",
-		),
+		isDnfEnabled: customType({ dataType: () => "bit(1)" })().default("b'1'"),
+		isRaceAgainEnabled: customType({ dataType: () => "bit(1)" })().default("b'1'"),
 		singleplayerRewardConfigId: varchar("singleplayer_reward_config_id", {
 			length: 255,
 		})
@@ -298,11 +281,7 @@ export const eventTable = mysqlTable(
 			.references(() => eventRewardTable.id),
 	},
 	(table) => [
-		index("EVENT_availability_index").on(
-			table.isEnabled,
-			table.minLevel,
-			table.maxLevel,
-		),
+		index("EVENT_availability_index").on(table.isEnabled, table.minLevel, table.maxLevel),
 		index("test_index").on(table.id, table.name),
 	],
 );
@@ -324,12 +303,9 @@ export const eventDataTable = mysqlTable(
 		distanceToFinish: float().notNull(),
 		eventDurationInMilliseconds: bigint({ mode: "number" }).notNull(),
 		eventModeId: int().notNull(),
-		eventSessionId: bigint({ mode: "number" }).references(
-			() => eventSessionTable.id,
-			{
-				onDelete: "cascade",
-			},
-		),
+		eventSessionId: bigint({ mode: "number" }).references(() => eventSessionTable.id, {
+			onDelete: "cascade",
+		}),
 		finishReason: int().notNull(),
 		fractionCompleted: float().notNull(),
 		hacksDetected: bigint({ mode: "number" }).notNull(),
@@ -338,12 +314,9 @@ export const eventDataTable = mysqlTable(
 		longestJumpDurationInMilliseconds: bigint({ mode: "number" }).notNull(),
 		numberOfCollisions: int().notNull(),
 		perfectStart: int().notNull(),
-		personaId: bigint({ mode: "number" }).references(
-			() => personaTable.id,
-			{
-				onDelete: "cascade",
-			},
-		),
+		personaId: bigint({ mode: "number" }).references(() => personaTable.id, {
+			onDelete: "cascade",
+		}),
 		rank: int().notNull(),
 		roadBlocksDodged: int().notNull(),
 		spikeStripsDodged: int().notNull(),
@@ -430,18 +403,12 @@ export const eventSessionTable = mysqlTable("event_session", {
 	}),
 	ended: bigint("ENDED", { mode: "number" }),
 	started: bigint("STARTED", { mode: "number" }),
-	lobbyid: bigint("LOBBYID", { mode: "number" }).references(
-		() => lobbyTable.id,
-		{
-			onDelete: "cascade",
-		},
-	),
-	nextlobbyid: bigint("NEXTLOBBYID", { mode: "number" }).references(
-		() => lobbyTable.id,
-		{
-			onDelete: "cascade",
-		},
-	),
+	lobbyid: bigint("LOBBYID", { mode: "number" }).references(() => lobbyTable.id, {
+		onDelete: "cascade",
+	}),
+	nextlobbyid: bigint("NEXTLOBBYID", { mode: "number" }).references(() => lobbyTable.id, {
+		onDelete: "cascade",
+	}),
 });
 
 export const hardwareInfoTable = mysqlTable(
@@ -453,9 +420,7 @@ export const hardwareInfoTable = mysqlTable(
 		hardwareInfo: longtext(),
 		userId: bigint({ mode: "number" }),
 	},
-	(table) => [
-		index("HARDWARE_INFO_hardwareHash_index").on(table.hardwareHash),
-	],
+	(table) => [index("HARDWARE_INFO_hardwareHash_index").on(table.hardwareHash)],
 );
 
 export const inventoryTable = mysqlTable("inventory", {
@@ -477,12 +442,9 @@ export const inviteTicketTable = mysqlTable(
 		id: bigint("ID", { mode: "number" }).autoincrement().primaryKey(),
 		discordNAME: varchar("DISCORD_NAME", { length: 255 }),
 		ticket: varchar("TICKET", { length: 255 }),
-		userid: bigint("USERID", { mode: "number" }).references(
-			() => userTable.id,
-			{
-				onDelete: "cascade",
-			},
-		),
+		userid: bigint("USERID", { mode: "number" }).references(() => userTable.id, {
+			onDelete: "cascade",
+		}),
 	},
 	(table) => [index("INVITE_TICKET_TICKET_index").on(table.ticket)],
 );
@@ -510,18 +472,12 @@ export const lobbyTable = mysqlTable(
 export const lobbyEntrantTable = mysqlTable("lobby_entrant", {
 	id: bigint({ mode: "number" }).autoincrement().primaryKey(),
 	gridIndex: int().notNull(),
-	lobbyid: bigint("LOBBYID", { mode: "number" }).references(
-		() => lobbyTable.id,
-		{
-			onDelete: "cascade",
-		},
-	),
-	personaid: bigint("PERSONAID", { mode: "number" }).references(
-		() => personaTable.id,
-		{
-			onDelete: "cascade",
-		},
-	),
+	lobbyid: bigint("LOBBYID", { mode: "number" }).references(() => lobbyTable.id, {
+		onDelete: "cascade",
+	}),
+	personaid: bigint("PERSONAID", { mode: "number" }).references(() => personaTable.id, {
+		onDelete: "cascade",
+	}),
 });
 
 export const loginAnnouncementTable = mysqlTable("login_announcement", {
@@ -543,12 +499,9 @@ export const newsArticleTable = mysqlTable("news_article", {
 	sticky: int(),
 	timestamp: timestamp().defaultNow().notNull(),
 	type: varchar({ length: 255 }),
-	personaId: bigint("persona_id", { mode: "number" }).references(
-		() => personaTable.id,
-		{
-			onDelete: "cascade",
-		},
-	),
+	personaId: bigint("persona_id", { mode: "number" }).references(() => personaTable.id, {
+		onDelete: "cascade",
+	}),
 	referencedPersonaId: bigint("referenced_persona_id", {
 		mode: "number",
 	}).references(() => personaTable.id, { onDelete: "cascade" }),
@@ -616,9 +569,7 @@ export const basketdefinitionTable = mysqlTable(
 			.references(() => productTable.productId, { onDelete: "cascade" }),
 		ownedCarTrans: longtext(),
 	},
-	(table) => [
-		uniqueIndex("BASKETDEFINITION_productId_uindex").on(table.productId),
-	],
+	(table) => [uniqueIndex("BASKETDEFINITION_productId_uindex").on(table.productId)],
 );
 
 export const giftCodeTable = mysqlTable("gift_code", {
@@ -647,9 +598,7 @@ export const inventoryItemTable = mysqlTable(
 			.notNull()
 			.references(() => productTable.productId, { onDelete: "cascade" }),
 	},
-	(table) => [
-		index("INVENTORY_ITEM_expirationDate_index").on(table.expirationDate),
-	],
+	(table) => [index("INVENTORY_ITEM_expirationDate_index").on(table.expirationDate)],
 );
 
 export const performancepartTable = mysqlTable("performancepart", {
@@ -673,34 +622,24 @@ export const personaAchievementTable = mysqlTable(
 			.notNull()
 			.references(() => personaTable.id, { onDelete: "cascade" }),
 	},
-	(table) => [
-		index("persona_ach_index").on(table.personaId, table.achievementId),
-	],
+	(table) => [index("persona_ach_index").on(table.personaId, table.achievementId)],
 );
 
-export const personaAchievementRankTable = mysqlTable(
-	"persona_achievement_rank",
-	{
-		id: bigint("ID", { mode: "number" }).autoincrement().primaryKey(),
-		achievedOn: datetime("achieved_on"),
-		state: mysqlEnum([
-			"Locked",
-			"InProgress",
-			"Completed",
-			"RewardWaiting",
-		]),
-		achievementRankId: bigint("achievement_rank_id", { mode: "number" })
-			.notNull()
-			.references(() => achievementRankTable.id, { onDelete: "cascade" }),
-		personaAchievementId: bigint("persona_achievement_id", {
-			mode: "number",
-		})
-			.notNull()
-			.references(() => personaAchievementTable.id, {
-				onDelete: "cascade",
-			}),
-	},
-);
+export const personaAchievementRankTable = mysqlTable("persona_achievement_rank", {
+	id: bigint("ID", { mode: "number" }).autoincrement().primaryKey(),
+	achievedOn: datetime("achieved_on"),
+	state: mysqlEnum(["Locked", "InProgress", "Completed", "RewardWaiting"]),
+	achievementRankId: bigint("achievement_rank_id", { mode: "number" })
+		.notNull()
+		.references(() => achievementRankTable.id, { onDelete: "cascade" }),
+	personaAchievementId: bigint("persona_achievement_id", {
+		mode: "number",
+	})
+		.notNull()
+		.references(() => personaAchievementTable.id, {
+			onDelete: "cascade",
+		}),
+});
 
 export const personaBadgeTable = mysqlTable("persona_badge", {
 	id: bigint("ID", { mode: "number" }).autoincrement().primaryKey(),
@@ -725,9 +664,7 @@ export const personaGiftTable = mysqlTable(
 			.references(() => giftCodeTable.code, { onDelete: "cascade" }),
 		useCount: int("use_count").notNull(),
 	},
-	(table) => [
-		uniqueIndex("UK_PERSONA_ID_CODE").on(table.personaId, table.code),
-	],
+	(table) => [uniqueIndex("UK_PERSONA_ID_CODE").on(table.personaId, table.code)],
 );
 
 export const productTable = mysqlTable(
@@ -797,12 +734,9 @@ export const promoCodeTable = mysqlTable("promo_code", {
 	id: bigint({ mode: "number" }).autoincrement().primaryKey(),
 	isUsed: customType({ dataType: () => "bit(1)" })(),
 	promoCode: varchar({ length: 255 }),
-	userid: bigint("USERID", { mode: "number" }).references(
-		() => userTable.id,
-		{
-			onDelete: "cascade",
-		},
-	),
+	userid: bigint("USERID", { mode: "number" }).references(() => userTable.id, {
+		onDelete: "cascade",
+	}),
 });
 
 export const recoveryPasswordTable = mysqlTable("recovery_password", {
@@ -844,12 +778,9 @@ export const skillmodpartTable = mysqlTable("skillmodpart", {
 
 export const socialRelationshipTable = mysqlTable("social_relationship", {
 	id: bigint("ID", { mode: "number" }).autoincrement().primaryKey(),
-	remotePersonaId: bigint({ mode: "number" }).references(
-		() => personaTable.id,
-		{
-			onDelete: "cascade",
-		},
-	),
+	remotePersonaId: bigint({ mode: "number" }).references(() => personaTable.id, {
+		onDelete: "cascade",
+	}),
 	status: bigint({ mode: "number" }),
 	fromUserId: bigint({ mode: "number" }).references(() => userTable.id, {
 		onDelete: "cascade",
@@ -891,12 +822,9 @@ export const usedPowerupTable = mysqlTable(
 		personaId: bigint({ mode: "number" })
 			.notNull()
 			.references(() => personaTable.id, { onDelete: "cascade" }),
-		eventSessionId: bigint({ mode: "number" }).references(
-			() => eventSessionTable.id,
-			{
-				onDelete: "cascade",
-			},
-		),
+		eventSessionId: bigint({ mode: "number" }).references(() => eventSessionTable.id, {
+			onDelete: "cascade",
+		}),
 		powerupHash: int().notNull(),
 		recordedAt: timestamp("recorded_at").defaultNow(),
 	},
@@ -957,9 +885,7 @@ export const vinylproductTable = mysqlTable("vinylproduct", {
 	visualStyle: varchar({ length: 255 }),
 	webIcon: varchar({ length: 255 }),
 	webLocation: varchar({ length: 255 }),
-	parentCategoryId: bigint({ mode: "number" }).references(
-		() => categoryTable.idcategory,
-	),
+	parentCategoryId: bigint({ mode: "number" }).references(() => categoryTable.idcategory),
 });
 
 export const virtualitemTable = mysqlTable("virtualitem", {

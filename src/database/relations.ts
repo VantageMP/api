@@ -37,14 +37,14 @@ export const relations = defineRelations(schema, (r) => ({
 			alias: "persona_id_user_id_via_ban",
 		}),
 		cars: r.many.carTable(),
+		eventData: r.many.eventDataTable(),
+		inventories: r.many.inventoryTable(),
+		lobbies: r.many.lobbyTable(),
 		user: r.one.userTable({
 			from: r.personaTable.userid,
 			to: r.userTable.id,
 			alias: "persona_userid_user_id",
 		}),
-		eventData: r.many.eventDataTable(),
-		inventories: r.many.inventoryTable(),
-		lobbies: r.many.lobbyTable(),
 		achievements: r.many.achievementTable(),
 		badgeDefinitions: r.many.badgeDefinitionTable(),
 		giftCodes: r.many.giftCodeTable(),
@@ -56,10 +56,10 @@ export const relations = defineRelations(schema, (r) => ({
 		personasViaBan: r.many.personaTable({
 			alias: "persona_id_user_id_via_ban",
 		}),
+		inviteTickets: r.many.inviteTicketTable(),
 		personasUserid: r.many.personaTable({
 			alias: "persona_userid_user_id",
 		}),
-		inviteTickets: r.many.inviteTicketTable(),
 		promoCodes: r.many.promoCodeTable(),
 		socialRelationshipsFromUserId: r.many.socialRelationshipTable({
 			alias: "socialRelationship_fromUserId_user_id",
@@ -254,12 +254,6 @@ export const relations = defineRelations(schema, (r) => ({
 			to: r.userTable.id,
 		}),
 	},
-	paintTable: {
-		car: r.one.carTable({
-			from: r.paintTable.carId,
-			to: r.carTable.id,
-		}),
-	},
 	amplifiersTable: {
 		product: r.one.productTable({
 			from: r.amplifiersTable.productId,
@@ -294,6 +288,12 @@ export const relations = defineRelations(schema, (r) => ({
 		personas: r.many.personaTable({
 			from: r.giftCodeTable.code.through(r.personaGiftTable.code),
 			to: r.personaTable.id.through(r.personaGiftTable.personaId),
+		}),
+	},
+	paintTable: {
+		car: r.one.carTable({
+			from: r.paintTable.carId,
+			to: r.carTable.id,
 		}),
 	},
 	performancepartTable: {

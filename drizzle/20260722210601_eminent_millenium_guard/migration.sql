@@ -658,30 +658,30 @@ CREATE TABLE `visualpart` (
 	`carId` bigint NOT NULL
 );
 --> statement-breakpoint
-CREATE INDEX `persona_ach_index` ON `persona_achievement` (`persona_id`,`achievement_id`);--> statement-breakpoint
-CREATE INDEX `LOBBY_startedTime_index` ON `lobby` (`startedTime`);--> statement-breakpoint
-CREATE INDEX `INVITE_TICKET_TICKET_index` ON `invite_ticket` (`TICKET`);--> statement-breakpoint
-CREATE INDEX `ACHIEVEMENT_category_index` ON `achievement` (`category`);--> statement-breakpoint
-CREATE INDEX `INVENTORY_ITEM_expirationDate_index` ON `inventory_item` (`expirationDate`);--> statement-breakpoint
-CREATE INDEX `hash_index` ON `used_powerup` (`powerupHash`);--> statement-breakpoint
 CREATE INDEX `PRODUCT_hash_index` ON `product` (`hash`);--> statement-breakpoint
 CREATE INDEX `PRODUCT_entitlementTag_index` ON `product` (`entitlementTag`);--> statement-breakpoint
 CREATE INDEX `PRODUCT_availability_index` ON `product` (`categoryName`,`productType`,`enabled`,`minLevel`,`premium`);--> statement-breakpoint
-CREATE INDEX `prod_id_index` ON `product` (`productId`);--> statement-breakpoint
+CREATE INDEX `persona_ach_index` ON `persona_achievement` (`persona_id`,`achievement_id`);--> statement-breakpoint
 CREATE INDEX `parent_prod_id_index` ON `product` (`parentProductId`);--> statement-breakpoint
-CREATE INDEX `IDX_CAR_expirationDate` ON `car` (`expirationDate`);--> statement-breakpoint
-CREATE INDEX `test_index` ON `event` (`ID`,`name`);--> statement-breakpoint
-CREATE INDEX `EVENT_availability_index` ON `event` (`isEnabled`,`minLevel`,`maxLevel`);--> statement-breakpoint
+CREATE INDEX `HARDWARE_INFO_hardwareHash_index` ON `hardware_info` (`hardwareHash`);--> statement-breakpoint
+CREATE INDEX `hash_index` ON `used_powerup` (`powerupHash`);--> statement-breakpoint
+CREATE INDEX `INVITE_TICKET_TICKET_index` ON `invite_ticket` (`TICKET`);--> statement-breakpoint
+CREATE INDEX `INVENTORY_ITEM_expirationDate_index` ON `inventory_item` (`expirationDate`);--> statement-breakpoint
+CREATE INDEX `prod_id_index` ON `product` (`productId`);--> statement-breakpoint
+CREATE INDEX `IDX_CAR_ownershipType` ON `car` (`ownershipType`);--> statement-breakpoint
 CREATE INDEX `store_name_key` ON `car_classes` (`store_name`);--> statement-breakpoint
 CREATE INDEX `hash_index` ON `car_classes` (`hash`);--> statement-breakpoint
-CREATE INDEX `IDX_CAR_ownershipType` ON `car` (`ownershipType`);--> statement-breakpoint
+CREATE INDEX `IDX_CAR_expirationDate` ON `car` (`expirationDate`);--> statement-breakpoint
 CREATE INDEX `BAN_existence_index` ON `ban` (`user_id`,`ends_at`);--> statement-breakpoint
 CREATE INDEX `BAN_endsAt_index` ON `ban` (`ends_at`);--> statement-breakpoint
 CREATE INDEX `ACHIEVEMENT_REWARD_internal_reward_description_index` ON `achievement_reward` (`internal_reward_description`);--> statement-breakpoint
-CREATE INDEX `HARDWARE_INFO_hardwareHash_index` ON `hardware_info` (`hardwareHash`);--> statement-breakpoint
-CREATE INDEX `car_id_index` ON `event_data` (`carId`);--> statement-breakpoint
+CREATE INDEX `ACHIEVEMENT_category_index` ON `achievement` (`category`);--> statement-breakpoint
 CREATE INDEX `finishreason_index` ON `event_data` (`finishReason`);--> statement-breakpoint
+CREATE INDEX `car_id_index` ON `event_data` (`carId`);--> statement-breakpoint
 CREATE INDEX `EVENT_DATA_persona_id_index` ON `event_data` (`personaId`);--> statement-breakpoint
+CREATE INDEX `LOBBY_startedTime_index` ON `lobby` (`startedTime`);--> statement-breakpoint
+CREATE INDEX `test_index` ON `event` (`ID`,`name`);--> statement-breakpoint
+CREATE INDEX `EVENT_availability_index` ON `event` (`isEnabled`,`minLevel`,`maxLevel`);--> statement-breakpoint
 ALTER TABLE `achievement` ADD CONSTRAINT `FK_ACHIEVEMENT_BADGE_DEFINITION_badge_definition_id` FOREIGN KEY (`badge_definition_id`) REFERENCES `badge_definition`(`ID`) ON DELETE CASCADE;--> statement-breakpoint
 ALTER TABLE `achievement_rank` ADD CONSTRAINT `FK_ACHIEVEMENT_RANK_ACHIEVEMENT_achievement_id` FOREIGN KEY (`achievement_id`) REFERENCES `achievement`(`ID`) ON DELETE CASCADE;--> statement-breakpoint
 ALTER TABLE `amplifiers` ADD CONSTRAINT `FK_AMPLIFIERS_PRODUCT_product_id` FOREIGN KEY (`product_id`) REFERENCES `product`(`productId`) ON DELETE CASCADE;--> statement-breakpoint

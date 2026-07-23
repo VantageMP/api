@@ -1,19 +1,25 @@
 {
-  "dialect": "mysql",
-  "id": "db2af4a1-b2fb-4bc4-95df-f57da1903b9d",
-  "prevIds": [],
   "version": "6",
+  "dialect": "mysql",
+  "id": "c46ad50d-4d3f-403c-a382-a65b7907af5a",
+  "prevIds": [
+    "f0933729-fec2-4f47-b8d7-f54caa5cbe34"
+  ],
   "ddl": [
-    {
-      "name": "achievement",
-      "entityType": "tables"
-    },
     {
       "name": "achievement_rank",
       "entityType": "tables"
     },
     {
       "name": "achievement_reward",
+      "entityType": "tables"
+    },
+    {
+      "name": "achievement",
+      "entityType": "tables"
+    },
+    {
+      "name": "amplifiers",
       "entityType": "tables"
     },
     {
@@ -25,7 +31,7 @@
       "entityType": "tables"
     },
     {
-      "name": "car",
+      "name": "basketdefinition",
       "entityType": "tables"
     },
     {
@@ -33,11 +39,15 @@
       "entityType": "tables"
     },
     {
-      "name": "card_pack",
+      "name": "car",
       "entityType": "tables"
     },
     {
       "name": "card_pack_item",
+      "entityType": "tables"
+    },
+    {
+      "name": "card_pack",
       "entityType": "tables"
     },
     {
@@ -53,10 +63,6 @@
       "entityType": "tables"
     },
     {
-      "name": "event",
-      "entityType": "tables"
-    },
-    {
       "name": "event_data",
       "entityType": "tables"
     },
@@ -69,7 +75,19 @@
       "entityType": "tables"
     },
     {
+      "name": "event",
+      "entityType": "tables"
+    },
+    {
+      "name": "gift_code",
+      "entityType": "tables"
+    },
+    {
       "name": "hardware_info",
+      "entityType": "tables"
+    },
+    {
+      "name": "inventory_item",
       "entityType": "tables"
     },
     {
@@ -85,11 +103,11 @@
       "entityType": "tables"
     },
     {
-      "name": "lobby",
+      "name": "lobby_entrant",
       "entityType": "tables"
     },
     {
-      "name": "lobby_entrant",
+      "name": "lobby",
       "entityType": "tables"
     },
     {
@@ -105,34 +123,6 @@
       "entityType": "tables"
     },
     {
-      "name": "persona",
-      "entityType": "tables"
-    },
-    {
-      "name": "reward_table",
-      "entityType": "tables"
-    },
-    {
-      "name": "user",
-      "entityType": "tables"
-    },
-    {
-      "name": "amplifiers",
-      "entityType": "tables"
-    },
-    {
-      "name": "basketdefinition",
-      "entityType": "tables"
-    },
-    {
-      "name": "gift_code",
-      "entityType": "tables"
-    },
-    {
-      "name": "inventory_item",
-      "entityType": "tables"
-    },
-    {
       "name": "paint",
       "entityType": "tables"
     },
@@ -145,11 +135,11 @@
       "entityType": "tables"
     },
     {
-      "name": "persona_achievement",
+      "name": "persona_achievement_rank",
       "entityType": "tables"
     },
     {
-      "name": "persona_achievement_rank",
+      "name": "persona_achievement",
       "entityType": "tables"
     },
     {
@@ -158,6 +148,10 @@
     },
     {
       "name": "persona_gift",
+      "entityType": "tables"
+    },
+    {
+      "name": "persona",
       "entityType": "tables"
     },
     {
@@ -181,6 +175,10 @@
       "entityType": "tables"
     },
     {
+      "name": "reward_table",
+      "entityType": "tables"
+    },
+    {
       "name": "skillmodpart",
       "entityType": "tables"
     },
@@ -189,15 +187,19 @@
       "entityType": "tables"
     },
     {
-      "name": "treasure_hunt",
-      "entityType": "tables"
-    },
-    {
       "name": "treasure_hunt_config",
       "entityType": "tables"
     },
     {
+      "name": "treasure_hunt",
+      "entityType": "tables"
+    },
+    {
       "name": "used_powerup",
+      "entityType": "tables"
+    },
+    {
+      "name": "user",
       "entityType": "tables"
     },
     {
@@ -215,160 +217,6 @@
     {
       "name": "visualpart",
       "entityType": "tables"
-    },
-    {
-      "type": "bigint",
-      "notNull": true,
-      "autoIncrement": true,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "ID",
-      "entityType": "columns",
-      "table": "achievement"
-    },
-    {
-      "type": "bit(1)",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "auto_update",
-      "entityType": "columns",
-      "table": "achievement"
-    },
-    {
-      "type": "varchar(255)",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "category",
-      "entityType": "columns",
-      "table": "achievement"
-    },
-    {
-      "type": "varchar(255)",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "name",
-      "entityType": "columns",
-      "table": "achievement"
-    },
-    {
-      "type": "varchar(255)",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "progress_text",
-      "entityType": "columns",
-      "table": "achievement"
-    },
-    {
-      "type": "bit(1)",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": "b'0'",
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "should_overwrite_progress",
-      "entityType": "columns",
-      "table": "achievement"
-    },
-    {
-      "type": "enum('None','FromMetersToDistance','FromMillisecondsToMinutes')",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "stat_conversion",
-      "entityType": "columns",
-      "table": "achievement"
-    },
-    {
-      "type": "text",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "update_trigger",
-      "entityType": "columns",
-      "table": "achievement"
-    },
-    {
-      "type": "text",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "update_value",
-      "entityType": "columns",
-      "table": "achievement"
-    },
-    {
-      "type": "bit(1)",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "visible",
-      "entityType": "columns",
-      "table": "achievement"
-    },
-    {
-      "type": "bigint",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "badge_definition_id",
-      "entityType": "columns",
-      "table": "achievement"
     },
     {
       "type": "bigint",
@@ -551,6 +399,160 @@
       "name": "rewardScript",
       "entityType": "columns",
       "table": "achievement_reward"
+    },
+    {
+      "type": "bigint",
+      "notNull": true,
+      "autoIncrement": true,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "ID",
+      "entityType": "columns",
+      "table": "achievement"
+    },
+    {
+      "type": "bit(1)",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "auto_update",
+      "entityType": "columns",
+      "table": "achievement"
+    },
+    {
+      "type": "varchar(255)",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "category",
+      "entityType": "columns",
+      "table": "achievement"
+    },
+    {
+      "type": "varchar(255)",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "name",
+      "entityType": "columns",
+      "table": "achievement"
+    },
+    {
+      "type": "varchar(255)",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "progress_text",
+      "entityType": "columns",
+      "table": "achievement"
+    },
+    {
+      "type": "bit(1)",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": "b'0'",
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "should_overwrite_progress",
+      "entityType": "columns",
+      "table": "achievement"
+    },
+    {
+      "type": "enum('None','FromMetersToDistance','FromMillisecondsToMinutes')",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "stat_conversion",
+      "entityType": "columns",
+      "table": "achievement"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "update_trigger",
+      "entityType": "columns",
+      "table": "achievement"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "update_value",
+      "entityType": "columns",
+      "table": "achievement"
+    },
+    {
+      "type": "bit(1)",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "visible",
+      "entityType": "columns",
+      "table": "achievement"
+    },
+    {
+      "type": "bigint",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "badge_definition_id",
+      "entityType": "columns",
+      "table": "achievement"
     },
     {
       "type": "bigint",
@@ -819,7 +821,7 @@
       "table": "ban"
     },
     {
-      "type": "tinyint(1)",
+      "type": "boolean",
       "notNull": false,
       "autoIncrement": false,
       "default": "true",
@@ -859,244 +861,6 @@
       "name": "ownedCarTrans",
       "entityType": "columns",
       "table": "basketdefinition"
-    },
-    {
-      "type": "bigint",
-      "notNull": true,
-      "autoIncrement": true,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "id",
-      "entityType": "columns",
-      "table": "car"
-    },
-    {
-      "type": "int",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "durability",
-      "entityType": "columns",
-      "table": "car"
-    },
-    {
-      "type": "datetime",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "expirationDate",
-      "entityType": "columns",
-      "table": "car"
-    },
-    {
-      "type": "float",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "heat",
-      "entityType": "columns",
-      "table": "car"
-    },
-    {
-      "type": "varchar(255)",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "ownershipType",
-      "entityType": "columns",
-      "table": "car"
-    },
-    {
-      "type": "bigint",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "personaId",
-      "entityType": "columns",
-      "table": "car"
-    },
-    {
-      "type": "int",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "baseCar",
-      "entityType": "columns",
-      "table": "car"
-    },
-    {
-      "type": "int",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "carClassHash",
-      "entityType": "columns",
-      "table": "car"
-    },
-    {
-      "type": "bit(1)",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "isPreset",
-      "entityType": "columns",
-      "table": "car"
-    },
-    {
-      "type": "int",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "level",
-      "entityType": "columns",
-      "table": "car"
-    },
-    {
-      "type": "varchar(255)",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "name",
-      "entityType": "columns",
-      "table": "car"
-    },
-    {
-      "type": "int",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "physicsProfileHash",
-      "entityType": "columns",
-      "table": "car"
-    },
-    {
-      "type": "int",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "rating",
-      "entityType": "columns",
-      "table": "car"
-    },
-    {
-      "type": "float",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "resalePrice",
-      "entityType": "columns",
-      "table": "car"
-    },
-    {
-      "type": "float",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "rideHeightDrop",
-      "entityType": "columns",
-      "table": "car"
-    },
-    {
-      "type": "int",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "skillModSlotCount",
-      "entityType": "columns",
-      "table": "car"
-    },
-    {
-      "type": "int",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "version",
-      "entityType": "columns",
-      "table": "car"
     },
     {
       "type": "varchar(255)",
@@ -1360,9 +1124,51 @@
       "charSet": null,
       "collation": null,
       "generated": null,
-      "name": "ID",
+      "name": "id",
       "entityType": "columns",
-      "table": "card_pack"
+      "table": "car"
+    },
+    {
+      "type": "int",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "durability",
+      "entityType": "columns",
+      "table": "car"
+    },
+    {
+      "type": "datetime",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "expirationDate",
+      "entityType": "columns",
+      "table": "car"
+    },
+    {
+      "type": "float",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "heat",
+      "entityType": "columns",
+      "table": "car"
     },
     {
       "type": "varchar(255)",
@@ -1374,9 +1180,177 @@
       "charSet": null,
       "collation": null,
       "generated": null,
-      "name": "entitlementTag",
+      "name": "ownershipType",
       "entityType": "columns",
-      "table": "card_pack"
+      "table": "car"
+    },
+    {
+      "type": "bigint",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "personaId",
+      "entityType": "columns",
+      "table": "car"
+    },
+    {
+      "type": "int",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "baseCar",
+      "entityType": "columns",
+      "table": "car"
+    },
+    {
+      "type": "int",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "carClassHash",
+      "entityType": "columns",
+      "table": "car"
+    },
+    {
+      "type": "bit(1)",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "isPreset",
+      "entityType": "columns",
+      "table": "car"
+    },
+    {
+      "type": "int",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "level",
+      "entityType": "columns",
+      "table": "car"
+    },
+    {
+      "type": "varchar(255)",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "name",
+      "entityType": "columns",
+      "table": "car"
+    },
+    {
+      "type": "int",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "physicsProfileHash",
+      "entityType": "columns",
+      "table": "car"
+    },
+    {
+      "type": "int",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "rating",
+      "entityType": "columns",
+      "table": "car"
+    },
+    {
+      "type": "float",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "resalePrice",
+      "entityType": "columns",
+      "table": "car"
+    },
+    {
+      "type": "float",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "rideHeightDrop",
+      "entityType": "columns",
+      "table": "car"
+    },
+    {
+      "type": "int",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "skillModSlotCount",
+      "entityType": "columns",
+      "table": "car"
+    },
+    {
+      "type": "int",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "version",
+      "entityType": "columns",
+      "table": "car"
     },
     {
       "type": "bigint",
@@ -1419,6 +1393,34 @@
       "name": "cardPackEntity_ID",
       "entityType": "columns",
       "table": "card_pack_item"
+    },
+    {
+      "type": "bigint",
+      "notNull": true,
+      "autoIncrement": true,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "ID",
+      "entityType": "columns",
+      "table": "card_pack"
+    },
+    {
+      "type": "varchar(255)",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "entitlementTag",
+      "entityType": "columns",
+      "table": "card_pack"
     },
     {
       "type": "bigint",
@@ -1727,314 +1729,6 @@
       "name": "shortName",
       "entityType": "columns",
       "table": "chat_room"
-    },
-    {
-      "type": "int",
-      "notNull": true,
-      "autoIncrement": true,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "ID",
-      "entityType": "columns",
-      "table": "event"
-    },
-    {
-      "type": "int",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "eventModeId",
-      "entityType": "columns",
-      "table": "event"
-    },
-    {
-      "type": "bit(1)",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": "b'1'",
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "isEnabled",
-      "entityType": "columns",
-      "table": "event"
-    },
-    {
-      "type": "bit(1)",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": "b'0'",
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "isLocked",
-      "entityType": "columns",
-      "table": "event"
-    },
-    {
-      "type": "bigint",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": "0",
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "rewardsTimeLimit",
-      "entityType": "columns",
-      "table": "event"
-    },
-    {
-      "type": "int",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "maxCarClassRating",
-      "entityType": "columns",
-      "table": "event"
-    },
-    {
-      "type": "int",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "maxLevel",
-      "entityType": "columns",
-      "table": "event"
-    },
-    {
-      "type": "int",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "maxPlayers",
-      "entityType": "columns",
-      "table": "event"
-    },
-    {
-      "type": "int",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "minCarClassRating",
-      "entityType": "columns",
-      "table": "event"
-    },
-    {
-      "type": "int",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "minLevel",
-      "entityType": "columns",
-      "table": "event"
-    },
-    {
-      "type": "varchar(255)",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "name",
-      "entityType": "columns",
-      "table": "event"
-    },
-    {
-      "type": "int",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "carClassHash",
-      "entityType": "columns",
-      "table": "event"
-    },
-    {
-      "type": "float",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "trackLength",
-      "entityType": "columns",
-      "table": "event"
-    },
-    {
-      "type": "bit(1)",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": "b'0'",
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "isRotationEnabled",
-      "entityType": "columns",
-      "table": "event"
-    },
-    {
-      "type": "int",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": "60000",
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "dnfTimerTime",
-      "entityType": "columns",
-      "table": "event"
-    },
-    {
-      "type": "int",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": "60000",
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "lobbyCountdownTime",
-      "entityType": "columns",
-      "table": "event"
-    },
-    {
-      "type": "bigint",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": "0",
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "legitTime",
-      "entityType": "columns",
-      "table": "event"
-    },
-    {
-      "type": "bit(1)",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": "b'1'",
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "isDnfEnabled",
-      "entityType": "columns",
-      "table": "event"
-    },
-    {
-      "type": "bit(1)",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": "b'1'",
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "isRaceAgainEnabled",
-      "entityType": "columns",
-      "table": "event"
-    },
-    {
-      "type": "varchar(255)",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "singleplayer_reward_config_id",
-      "entityType": "columns",
-      "table": "event"
-    },
-    {
-      "type": "varchar(255)",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "multiplayer_reward_config_id",
-      "entityType": "columns",
-      "table": "event"
-    },
-    {
-      "type": "varchar(255)",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "private_reward_config_id",
-      "entityType": "columns",
-      "table": "event"
     },
     {
       "type": "bigint",
@@ -3115,6 +2809,314 @@
       "table": "event_session"
     },
     {
+      "type": "int",
+      "notNull": true,
+      "autoIncrement": true,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "ID",
+      "entityType": "columns",
+      "table": "event"
+    },
+    {
+      "type": "int",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "eventModeId",
+      "entityType": "columns",
+      "table": "event"
+    },
+    {
+      "type": "bit(1)",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": "b'1'",
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "isEnabled",
+      "entityType": "columns",
+      "table": "event"
+    },
+    {
+      "type": "bit(1)",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": "b'0'",
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "isLocked",
+      "entityType": "columns",
+      "table": "event"
+    },
+    {
+      "type": "bigint",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": "0",
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "rewardsTimeLimit",
+      "entityType": "columns",
+      "table": "event"
+    },
+    {
+      "type": "int",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "maxCarClassRating",
+      "entityType": "columns",
+      "table": "event"
+    },
+    {
+      "type": "int",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "maxLevel",
+      "entityType": "columns",
+      "table": "event"
+    },
+    {
+      "type": "int",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "maxPlayers",
+      "entityType": "columns",
+      "table": "event"
+    },
+    {
+      "type": "int",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "minCarClassRating",
+      "entityType": "columns",
+      "table": "event"
+    },
+    {
+      "type": "int",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "minLevel",
+      "entityType": "columns",
+      "table": "event"
+    },
+    {
+      "type": "varchar(255)",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "name",
+      "entityType": "columns",
+      "table": "event"
+    },
+    {
+      "type": "int",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "carClassHash",
+      "entityType": "columns",
+      "table": "event"
+    },
+    {
+      "type": "float",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "trackLength",
+      "entityType": "columns",
+      "table": "event"
+    },
+    {
+      "type": "bit(1)",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": "b'0'",
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "isRotationEnabled",
+      "entityType": "columns",
+      "table": "event"
+    },
+    {
+      "type": "int",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": "60000",
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "dnfTimerTime",
+      "entityType": "columns",
+      "table": "event"
+    },
+    {
+      "type": "int",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": "60000",
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "lobbyCountdownTime",
+      "entityType": "columns",
+      "table": "event"
+    },
+    {
+      "type": "bigint",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": "0",
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "legitTime",
+      "entityType": "columns",
+      "table": "event"
+    },
+    {
+      "type": "bit(1)",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": "b'1'",
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "isDnfEnabled",
+      "entityType": "columns",
+      "table": "event"
+    },
+    {
+      "type": "bit(1)",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": "b'1'",
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "isRaceAgainEnabled",
+      "entityType": "columns",
+      "table": "event"
+    },
+    {
+      "type": "varchar(255)",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "singleplayer_reward_config_id",
+      "entityType": "columns",
+      "table": "event"
+    },
+    {
+      "type": "varchar(255)",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "multiplayer_reward_config_id",
+      "entityType": "columns",
+      "table": "event"
+    },
+    {
+      "type": "varchar(255)",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "private_reward_config_id",
+      "entityType": "columns",
+      "table": "event"
+    },
+    {
       "type": "varchar(255)",
       "notNull": true,
       "autoIncrement": false,
@@ -3280,6 +3282,104 @@
       "generated": null,
       "name": "id",
       "entityType": "columns",
+      "table": "inventory_item"
+    },
+    {
+      "type": "datetime",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "expirationDate",
+      "entityType": "columns",
+      "table": "inventory_item"
+    },
+    {
+      "type": "int",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "remainingUseCount",
+      "entityType": "columns",
+      "table": "inventory_item"
+    },
+    {
+      "type": "int",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "resellPrice",
+      "entityType": "columns",
+      "table": "inventory_item"
+    },
+    {
+      "type": "varchar(255)",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "status",
+      "entityType": "columns",
+      "table": "inventory_item"
+    },
+    {
+      "type": "bigint",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "inventoryEntity_id",
+      "entityType": "columns",
+      "table": "inventory_item"
+    },
+    {
+      "type": "varchar(255)",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "productId",
+      "entityType": "columns",
+      "table": "inventory_item"
+    },
+    {
+      "type": "bigint",
+      "notNull": true,
+      "autoIncrement": true,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
       "table": "inventory"
     },
     {
@@ -3390,104 +3490,6 @@
       "charSet": null,
       "collation": null,
       "generated": null,
-      "name": "id",
-      "entityType": "columns",
-      "table": "inventory_item"
-    },
-    {
-      "type": "datetime",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "expirationDate",
-      "entityType": "columns",
-      "table": "inventory_item"
-    },
-    {
-      "type": "int",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "remainingUseCount",
-      "entityType": "columns",
-      "table": "inventory_item"
-    },
-    {
-      "type": "int",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "resellPrice",
-      "entityType": "columns",
-      "table": "inventory_item"
-    },
-    {
-      "type": "varchar(255)",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "status",
-      "entityType": "columns",
-      "table": "inventory_item"
-    },
-    {
-      "type": "bigint",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "inventoryEntity_id",
-      "entityType": "columns",
-      "table": "inventory_item"
-    },
-    {
-      "type": "varchar(255)",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "productId",
-      "entityType": "columns",
-      "table": "inventory_item"
-    },
-    {
-      "type": "bigint",
-      "notNull": true,
-      "autoIncrement": true,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
       "name": "ID",
       "entityType": "columns",
       "table": "invite_ticket"
@@ -3572,6 +3574,62 @@
       "charSet": null,
       "collation": null,
       "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "lobby_entrant"
+    },
+    {
+      "type": "int",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "gridIndex",
+      "entityType": "columns",
+      "table": "lobby_entrant"
+    },
+    {
+      "type": "bigint",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "LOBBYID",
+      "entityType": "columns",
+      "table": "lobby_entrant"
+    },
+    {
+      "type": "bigint",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "PERSONAID",
+      "entityType": "columns",
+      "table": "lobby_entrant"
+    },
+    {
+      "type": "bigint",
+      "notNull": true,
+      "autoIncrement": true,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
       "name": "ID",
       "entityType": "columns",
       "table": "lobby"
@@ -3645,62 +3703,6 @@
       "name": "startedTime",
       "entityType": "columns",
       "table": "lobby"
-    },
-    {
-      "type": "bigint",
-      "notNull": true,
-      "autoIncrement": true,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "id",
-      "entityType": "columns",
-      "table": "lobby_entrant"
-    },
-    {
-      "type": "int",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "gridIndex",
-      "entityType": "columns",
-      "table": "lobby_entrant"
-    },
-    {
-      "type": "bigint",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "LOBBYID",
-      "entityType": "columns",
-      "table": "lobby_entrant"
-    },
-    {
-      "type": "bigint",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "PERSONAID",
-      "entityType": "columns",
-      "table": "lobby_entrant"
     },
     {
       "type": "int",
@@ -3888,7 +3890,7 @@
       "type": "timestamp",
       "notNull": true,
       "autoIncrement": false,
-      "default": "CURRENT_TIMESTAMP",
+      "default": "(now())",
       "onUpdateNow": false,
       "onUpdateNowFsp": null,
       "charSet": null,
@@ -4162,6 +4164,258 @@
       "generated": null,
       "name": "ID",
       "entityType": "columns",
+      "table": "persona_achievement_rank"
+    },
+    {
+      "type": "datetime",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "achieved_on",
+      "entityType": "columns",
+      "table": "persona_achievement_rank"
+    },
+    {
+      "type": "enum('Locked','InProgress','Completed','RewardWaiting')",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "state",
+      "entityType": "columns",
+      "table": "persona_achievement_rank"
+    },
+    {
+      "type": "bigint",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "achievement_rank_id",
+      "entityType": "columns",
+      "table": "persona_achievement_rank"
+    },
+    {
+      "type": "bigint",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "persona_achievement_id",
+      "entityType": "columns",
+      "table": "persona_achievement_rank"
+    },
+    {
+      "type": "bigint",
+      "notNull": true,
+      "autoIncrement": true,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "ID",
+      "entityType": "columns",
+      "table": "persona_achievement"
+    },
+    {
+      "type": "bit(1)",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "can_progress",
+      "entityType": "columns",
+      "table": "persona_achievement"
+    },
+    {
+      "type": "bigint",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "current_value",
+      "entityType": "columns",
+      "table": "persona_achievement"
+    },
+    {
+      "type": "bigint",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "achievement_id",
+      "entityType": "columns",
+      "table": "persona_achievement"
+    },
+    {
+      "type": "bigint",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "persona_id",
+      "entityType": "columns",
+      "table": "persona_achievement"
+    },
+    {
+      "type": "bigint",
+      "notNull": true,
+      "autoIncrement": true,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "ID",
+      "entityType": "columns",
+      "table": "persona_badge"
+    },
+    {
+      "type": "int",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "slot",
+      "entityType": "columns",
+      "table": "persona_badge"
+    },
+    {
+      "type": "bigint",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "badge_definition_id",
+      "entityType": "columns",
+      "table": "persona_badge"
+    },
+    {
+      "type": "bigint",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "persona_id",
+      "entityType": "columns",
+      "table": "persona_badge"
+    },
+    {
+      "type": "bigint",
+      "notNull": true,
+      "autoIncrement": true,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "persona_gift"
+    },
+    {
+      "type": "bigint",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "persona_id",
+      "entityType": "columns",
+      "table": "persona_gift"
+    },
+    {
+      "type": "varchar(255)",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "code",
+      "entityType": "columns",
+      "table": "persona_gift"
+    },
+    {
+      "type": "int",
+      "notNull": true,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "use_count",
+      "entityType": "columns",
+      "table": "persona_gift"
+    },
+    {
+      "type": "bigint",
+      "notNull": true,
+      "autoIncrement": true,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "ID",
+      "entityType": "columns",
       "table": "persona"
     },
     {
@@ -4415,258 +4669,6 @@
       "name": "numCarSlots",
       "entityType": "columns",
       "table": "persona"
-    },
-    {
-      "type": "bigint",
-      "notNull": true,
-      "autoIncrement": true,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "ID",
-      "entityType": "columns",
-      "table": "persona_achievement"
-    },
-    {
-      "type": "bit(1)",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "can_progress",
-      "entityType": "columns",
-      "table": "persona_achievement"
-    },
-    {
-      "type": "bigint",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "current_value",
-      "entityType": "columns",
-      "table": "persona_achievement"
-    },
-    {
-      "type": "bigint",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "achievement_id",
-      "entityType": "columns",
-      "table": "persona_achievement"
-    },
-    {
-      "type": "bigint",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "persona_id",
-      "entityType": "columns",
-      "table": "persona_achievement"
-    },
-    {
-      "type": "bigint",
-      "notNull": true,
-      "autoIncrement": true,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "ID",
-      "entityType": "columns",
-      "table": "persona_achievement_rank"
-    },
-    {
-      "type": "datetime",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "achieved_on",
-      "entityType": "columns",
-      "table": "persona_achievement_rank"
-    },
-    {
-      "type": "enum('Locked','InProgress','Completed','RewardWaiting')",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "state",
-      "entityType": "columns",
-      "table": "persona_achievement_rank"
-    },
-    {
-      "type": "bigint",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "achievement_rank_id",
-      "entityType": "columns",
-      "table": "persona_achievement_rank"
-    },
-    {
-      "type": "bigint",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "persona_achievement_id",
-      "entityType": "columns",
-      "table": "persona_achievement_rank"
-    },
-    {
-      "type": "bigint",
-      "notNull": true,
-      "autoIncrement": true,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "ID",
-      "entityType": "columns",
-      "table": "persona_badge"
-    },
-    {
-      "type": "int",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "slot",
-      "entityType": "columns",
-      "table": "persona_badge"
-    },
-    {
-      "type": "bigint",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "badge_definition_id",
-      "entityType": "columns",
-      "table": "persona_badge"
-    },
-    {
-      "type": "bigint",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "persona_id",
-      "entityType": "columns",
-      "table": "persona_badge"
-    },
-    {
-      "type": "bigint",
-      "notNull": true,
-      "autoIncrement": true,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "id",
-      "entityType": "columns",
-      "table": "persona_gift"
-    },
-    {
-      "type": "bigint",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "persona_id",
-      "entityType": "columns",
-      "table": "persona_gift"
-    },
-    {
-      "type": "varchar(255)",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "code",
-      "entityType": "columns",
-      "table": "persona_gift"
-    },
-    {
-      "type": "int",
-      "notNull": true,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "use_count",
-      "entityType": "columns",
-      "table": "persona_gift"
     },
     {
       "type": "bigint",
@@ -5187,7 +5189,7 @@
       "table": "product"
     },
     {
-      "type": "tinyint(1)",
+      "type": "boolean",
       "notNull": true,
       "autoIncrement": false,
       "default": "false",
@@ -5450,34 +5452,6 @@
       "generated": null,
       "name": "ID",
       "entityType": "columns",
-      "table": "reward_table"
-    },
-    {
-      "type": "varchar(255)",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "name",
-      "entityType": "columns",
-      "table": "reward_table"
-    },
-    {
-      "type": "bigint",
-      "notNull": true,
-      "autoIncrement": true,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "ID",
-      "entityType": "columns",
       "table": "reward_table_item"
     },
     {
@@ -5521,6 +5495,34 @@
       "name": "rewardTableEntity_ID",
       "entityType": "columns",
       "table": "reward_table_item"
+    },
+    {
+      "type": "bigint",
+      "notNull": true,
+      "autoIncrement": true,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "ID",
+      "entityType": "columns",
+      "table": "reward_table"
+    },
+    {
+      "type": "varchar(255)",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "name",
+      "entityType": "columns",
+      "table": "reward_table"
     },
     {
       "type": "bigint",
@@ -5651,6 +5653,104 @@
     {
       "type": "bigint",
       "notNull": true,
+      "autoIncrement": true,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "ID",
+      "entityType": "columns",
+      "table": "treasure_hunt_config"
+    },
+    {
+      "type": "float",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "base_cash",
+      "entityType": "columns",
+      "table": "treasure_hunt_config"
+    },
+    {
+      "type": "float",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "base_rep",
+      "entityType": "columns",
+      "table": "treasure_hunt_config"
+    },
+    {
+      "type": "float",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "cash_multiplier",
+      "entityType": "columns",
+      "table": "treasure_hunt_config"
+    },
+    {
+      "type": "float",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "rep_multiplier",
+      "entityType": "columns",
+      "table": "treasure_hunt_config"
+    },
+    {
+      "type": "int",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "streak",
+      "entityType": "columns",
+      "table": "treasure_hunt_config"
+    },
+    {
+      "type": "bigint",
+      "notNull": false,
+      "autoIncrement": false,
+      "default": null,
+      "onUpdateNow": false,
+      "onUpdateNowFsp": null,
+      "charSet": null,
+      "collation": null,
+      "generated": null,
+      "name": "reward_table_id",
+      "entityType": "columns",
+      "table": "treasure_hunt_config"
+    },
+    {
+      "type": "bigint",
+      "notNull": true,
       "autoIncrement": false,
       "default": null,
       "onUpdateNow": false,
@@ -5770,104 +5870,6 @@
       "charSet": null,
       "collation": null,
       "generated": null,
-      "name": "ID",
-      "entityType": "columns",
-      "table": "treasure_hunt_config"
-    },
-    {
-      "type": "float",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "base_cash",
-      "entityType": "columns",
-      "table": "treasure_hunt_config"
-    },
-    {
-      "type": "float",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "base_rep",
-      "entityType": "columns",
-      "table": "treasure_hunt_config"
-    },
-    {
-      "type": "float",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "cash_multiplier",
-      "entityType": "columns",
-      "table": "treasure_hunt_config"
-    },
-    {
-      "type": "float",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "rep_multiplier",
-      "entityType": "columns",
-      "table": "treasure_hunt_config"
-    },
-    {
-      "type": "int",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "streak",
-      "entityType": "columns",
-      "table": "treasure_hunt_config"
-    },
-    {
-      "type": "bigint",
-      "notNull": false,
-      "autoIncrement": false,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
-      "name": "reward_table_id",
-      "entityType": "columns",
-      "table": "treasure_hunt_config"
-    },
-    {
-      "type": "bigint",
-      "notNull": true,
-      "autoIncrement": true,
-      "default": null,
-      "onUpdateNow": false,
-      "onUpdateNowFsp": null,
-      "charSet": null,
-      "collation": null,
-      "generated": null,
       "name": "id",
       "entityType": "columns",
       "table": "used_powerup"
@@ -5918,7 +5920,7 @@
       "type": "timestamp",
       "notNull": false,
       "autoIncrement": false,
-      "default": "CURRENT_TIMESTAMP",
+      "default": "(now())",
       "onUpdateNow": false,
       "onUpdateNowFsp": null,
       "charSet": null,
@@ -5944,7 +5946,7 @@
     },
     {
       "type": "varchar(255)",
-      "notNull": false,
+      "notNull": true,
       "autoIncrement": false,
       "default": null,
       "onUpdateNow": false,
@@ -5957,8 +5959,8 @@
       "table": "user"
     },
     {
-      "type": "varchar(50)",
-      "notNull": false,
+      "type": "varchar(255)",
+      "notNull": true,
       "autoIncrement": false,
       "default": null,
       "onUpdateNow": false,
@@ -6030,7 +6032,7 @@
       "type": "datetime",
       "notNull": false,
       "autoIncrement": false,
-      "default": null,
+      "default": "(now())",
       "onUpdateNow": false,
       "onUpdateNowFsp": null,
       "charSet": null,
@@ -7022,10 +7024,218 @@
     },
     {
       "columns": [
+        "ID"
+      ],
+      "name": "PRIMARY",
+      "table": "achievement_rank",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "ID"
+      ],
+      "name": "PRIMARY",
+      "table": "achievement_reward",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "ID"
+      ],
+      "name": "PRIMARY",
+      "table": "achievement",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
         "id"
       ],
       "name": "PRIMARY",
-      "table": "report",
+      "table": "amplifiers",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "ID"
+      ],
+      "name": "PRIMARY",
+      "table": "badge_definition",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "name": "PRIMARY",
+      "table": "ban",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "productId"
+      ],
+      "name": "PRIMARY",
+      "table": "basketdefinition",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "store_name"
+      ],
+      "name": "PRIMARY",
+      "table": "car_classes",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "name": "PRIMARY",
+      "table": "car",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "ID"
+      ],
+      "name": "PRIMARY",
+      "table": "card_pack_item",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "ID"
+      ],
+      "name": "PRIMARY",
+      "table": "card_pack",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "idcategory"
+      ],
+      "name": "PRIMARY",
+      "table": "category",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "name": "PRIMARY",
+      "table": "chat_announcement",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "ID"
+      ],
+      "name": "PRIMARY",
+      "table": "chat_room",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "ID"
+      ],
+      "name": "PRIMARY",
+      "table": "event_data",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "ID"
+      ],
+      "name": "PRIMARY",
+      "table": "event_reward",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "ID"
+      ],
+      "name": "PRIMARY",
+      "table": "event_session",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "ID"
+      ],
+      "name": "PRIMARY",
+      "table": "event",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "code"
+      ],
+      "name": "PRIMARY",
+      "table": "gift_code",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "ID"
+      ],
+      "name": "PRIMARY",
+      "table": "hardware_info",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "name": "PRIMARY",
+      "table": "inventory_item",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "name": "PRIMARY",
+      "table": "inventory",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "ID"
+      ],
+      "name": "PRIMARY",
+      "table": "invite_ticket",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "level"
+      ],
+      "name": "PRIMARY",
+      "table": "level_rep",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "name": "PRIMARY",
+      "table": "lobby_entrant",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "ID"
+      ],
+      "name": "PRIMARY",
+      "table": "lobby",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "name": "PRIMARY",
+      "table": "login_announcement",
       "entityType": "pks"
     },
     {
@@ -7073,7 +7283,7 @@
         "ID"
       ],
       "name": "PRIMARY",
-      "table": "persona",
+      "table": "persona_achievement_rank",
       "entityType": "pks"
     },
     {
@@ -7082,14 +7292,6 @@
       ],
       "name": "PRIMARY",
       "table": "persona_achievement",
-      "entityType": "pks"
-    },
-    {
-      "columns": [
-        "ID"
-      ],
-      "name": "PRIMARY",
-      "table": "persona_achievement_rank",
       "entityType": "pks"
     },
     {
@@ -7106,6 +7308,14 @@
       ],
       "name": "PRIMARY",
       "table": "persona_gift",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "ID"
+      ],
+      "name": "PRIMARY",
+      "table": "persona",
       "entityType": "pks"
     },
     {
@@ -7137,15 +7347,7 @@
         "id"
       ],
       "name": "PRIMARY",
-      "table": "login_announcement",
-      "entityType": "pks"
-    },
-    {
-      "columns": [
-        "ID"
-      ],
-      "name": "PRIMARY",
-      "table": "reward_table",
+      "table": "report",
       "entityType": "pks"
     },
     {
@@ -7154,6 +7356,14 @@
       ],
       "name": "PRIMARY",
       "table": "reward_table_item",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "ID"
+      ],
+      "name": "PRIMARY",
+      "table": "reward_table",
       "entityType": "pks"
     },
     {
@@ -7174,18 +7384,18 @@
     },
     {
       "columns": [
-        "personaId"
-      ],
-      "name": "PRIMARY",
-      "table": "treasure_hunt",
-      "entityType": "pks"
-    },
-    {
-      "columns": [
         "ID"
       ],
       "name": "PRIMARY",
       "table": "treasure_hunt_config",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "personaId"
+      ],
+      "name": "PRIMARY",
+      "table": "treasure_hunt",
       "entityType": "pks"
     },
     {
@@ -7238,211 +7448,375 @@
     },
     {
       "columns": [
-        "ID"
+        {
+          "value": "internal_reward_description",
+          "isExpression": false
+        }
       ],
-      "name": "PRIMARY",
-      "table": "chat_room",
-      "entityType": "pks"
+      "isUnique": false,
+      "using": null,
+      "algorithm": null,
+      "lock": null,
+      "nameExplicit": true,
+      "name": "ACHIEVEMENT_REWARD_internal_reward_description_index",
+      "entityType": "indexes",
+      "table": "achievement_reward"
     },
     {
       "columns": [
-        "ID"
+        {
+          "value": "category",
+          "isExpression": false
+        }
       ],
-      "name": "PRIMARY",
-      "table": "achievement_rank",
-      "entityType": "pks"
+      "isUnique": false,
+      "using": null,
+      "algorithm": null,
+      "lock": null,
+      "nameExplicit": true,
+      "name": "ACHIEVEMENT_category_index",
+      "entityType": "indexes",
+      "table": "achievement"
     },
     {
       "columns": [
-        "ID"
+        {
+          "value": "badge_definition_id",
+          "isExpression": false
+        }
       ],
-      "name": "PRIMARY",
-      "table": "achievement_reward",
-      "entityType": "pks"
+      "isUnique": true,
+      "using": null,
+      "algorithm": null,
+      "lock": null,
+      "nameExplicit": true,
+      "name": "UK_ACHIEVEMENT_badge_definition_id",
+      "entityType": "indexes",
+      "table": "achievement"
     },
     {
       "columns": [
-        "id"
+        {
+          "value": "product_id",
+          "isExpression": false
+        }
       ],
-      "name": "PRIMARY",
-      "table": "amplifiers",
-      "entityType": "pks"
+      "isUnique": true,
+      "using": null,
+      "algorithm": null,
+      "lock": null,
+      "nameExplicit": true,
+      "name": "UK_AMPLIFIERS_product_id",
+      "entityType": "indexes",
+      "table": "amplifiers"
     },
     {
       "columns": [
-        "ID"
+        {
+          "value": "user_id",
+          "isExpression": false
+        },
+        {
+          "value": "ends_at",
+          "isExpression": false
+        }
       ],
-      "name": "PRIMARY",
-      "table": "badge_definition",
-      "entityType": "pks"
+      "isUnique": false,
+      "using": null,
+      "algorithm": null,
+      "lock": null,
+      "nameExplicit": true,
+      "name": "BAN_existence_index",
+      "entityType": "indexes",
+      "table": "ban"
     },
     {
       "columns": [
-        "id"
+        {
+          "value": "ends_at",
+          "isExpression": false
+        }
       ],
-      "name": "PRIMARY",
-      "table": "ban",
-      "entityType": "pks"
+      "isUnique": false,
+      "using": null,
+      "algorithm": null,
+      "lock": null,
+      "nameExplicit": true,
+      "name": "BAN_endsAt_index",
+      "entityType": "indexes",
+      "table": "ban"
     },
     {
       "columns": [
-        "productId"
+        {
+          "value": "productId",
+          "isExpression": false
+        }
       ],
-      "name": "PRIMARY",
-      "table": "basketdefinition",
-      "entityType": "pks"
+      "isUnique": true,
+      "using": null,
+      "algorithm": null,
+      "lock": null,
+      "nameExplicit": true,
+      "name": "BASKETDEFINITION_productId_uindex",
+      "entityType": "indexes",
+      "table": "basketdefinition"
     },
     {
       "columns": [
-        "id"
+        {
+          "value": "store_name",
+          "isExpression": false
+        }
       ],
-      "name": "PRIMARY",
-      "table": "car",
-      "entityType": "pks"
+      "isUnique": false,
+      "using": null,
+      "algorithm": null,
+      "lock": null,
+      "nameExplicit": true,
+      "name": "store_name_key",
+      "entityType": "indexes",
+      "table": "car_classes"
     },
     {
       "columns": [
-        "store_name"
+        {
+          "value": "store_name",
+          "isExpression": false
+        }
       ],
-      "name": "PRIMARY",
-      "table": "car_classes",
-      "entityType": "pks"
+      "isUnique": true,
+      "using": null,
+      "algorithm": null,
+      "lock": null,
+      "nameExplicit": true,
+      "name": "store_name_index",
+      "entityType": "indexes",
+      "table": "car_classes"
     },
     {
       "columns": [
-        "ID"
+        {
+          "value": "hash",
+          "isExpression": false
+        }
       ],
-      "name": "PRIMARY",
-      "table": "card_pack",
-      "entityType": "pks"
+      "isUnique": false,
+      "using": null,
+      "algorithm": null,
+      "lock": null,
+      "nameExplicit": true,
+      "name": "hash_index",
+      "entityType": "indexes",
+      "table": "car_classes"
     },
     {
       "columns": [
-        "ID"
+        {
+          "value": "expirationDate",
+          "isExpression": false
+        }
       ],
-      "name": "PRIMARY",
-      "table": "card_pack_item",
-      "entityType": "pks"
+      "isUnique": false,
+      "using": null,
+      "algorithm": null,
+      "lock": null,
+      "nameExplicit": true,
+      "name": "IDX_CAR_expirationDate",
+      "entityType": "indexes",
+      "table": "car"
     },
     {
       "columns": [
-        "idcategory"
+        {
+          "value": "ownershipType",
+          "isExpression": false
+        }
       ],
-      "name": "PRIMARY",
-      "table": "category",
-      "entityType": "pks"
+      "isUnique": false,
+      "using": null,
+      "algorithm": null,
+      "lock": null,
+      "nameExplicit": true,
+      "name": "IDX_CAR_ownershipType",
+      "entityType": "indexes",
+      "table": "car"
     },
     {
       "columns": [
-        "id"
+        {
+          "value": "carId",
+          "isExpression": false
+        }
       ],
-      "name": "PRIMARY",
-      "table": "chat_announcement",
-      "entityType": "pks"
+      "isUnique": false,
+      "using": null,
+      "algorithm": null,
+      "lock": null,
+      "nameExplicit": true,
+      "name": "car_id_index",
+      "entityType": "indexes",
+      "table": "event_data"
     },
     {
       "columns": [
-        "ID"
+        {
+          "value": "finishReason",
+          "isExpression": false
+        }
       ],
-      "name": "PRIMARY",
-      "table": "achievement",
-      "entityType": "pks"
+      "isUnique": false,
+      "using": null,
+      "algorithm": null,
+      "lock": null,
+      "nameExplicit": true,
+      "name": "finishreason_index",
+      "entityType": "indexes",
+      "table": "event_data"
     },
     {
       "columns": [
-        "ID"
+        {
+          "value": "personaId",
+          "isExpression": false
+        }
       ],
-      "name": "PRIMARY",
-      "table": "event",
-      "entityType": "pks"
+      "isUnique": false,
+      "using": null,
+      "algorithm": null,
+      "lock": null,
+      "nameExplicit": true,
+      "name": "EVENT_DATA_persona_id_index",
+      "entityType": "indexes",
+      "table": "event_data"
     },
     {
       "columns": [
-        "ID"
+        {
+          "value": "eventSessionId",
+          "isExpression": false
+        },
+        {
+          "value": "personaId",
+          "isExpression": false
+        }
       ],
-      "name": "PRIMARY",
-      "table": "event_data",
-      "entityType": "pks"
+      "isUnique": true,
+      "using": null,
+      "algorithm": null,
+      "lock": null,
+      "nameExplicit": true,
+      "name": "esi_personaId",
+      "entityType": "indexes",
+      "table": "event_data"
     },
     {
       "columns": [
-        "ID"
+        {
+          "value": "ID",
+          "isExpression": false
+        },
+        {
+          "value": "name",
+          "isExpression": false
+        }
       ],
-      "name": "PRIMARY",
-      "table": "event_reward",
-      "entityType": "pks"
+      "isUnique": false,
+      "using": null,
+      "algorithm": null,
+      "lock": null,
+      "nameExplicit": true,
+      "name": "test_index",
+      "entityType": "indexes",
+      "table": "event"
     },
     {
       "columns": [
-        "ID"
+        {
+          "value": "isEnabled",
+          "isExpression": false
+        },
+        {
+          "value": "minLevel",
+          "isExpression": false
+        },
+        {
+          "value": "maxLevel",
+          "isExpression": false
+        }
       ],
-      "name": "PRIMARY",
-      "table": "event_session",
-      "entityType": "pks"
+      "isUnique": false,
+      "using": null,
+      "algorithm": null,
+      "lock": null,
+      "nameExplicit": true,
+      "name": "EVENT_availability_index",
+      "entityType": "indexes",
+      "table": "event"
     },
     {
       "columns": [
-        "code"
+        {
+          "value": "hardwareHash",
+          "isExpression": false
+        }
       ],
-      "name": "PRIMARY",
-      "table": "gift_code",
-      "entityType": "pks"
+      "isUnique": false,
+      "using": null,
+      "algorithm": null,
+      "lock": null,
+      "nameExplicit": true,
+      "name": "HARDWARE_INFO_hardwareHash_index",
+      "entityType": "indexes",
+      "table": "hardware_info"
     },
     {
       "columns": [
-        "ID"
+        {
+          "value": "expirationDate",
+          "isExpression": false
+        }
       ],
-      "name": "PRIMARY",
-      "table": "hardware_info",
-      "entityType": "pks"
+      "isUnique": false,
+      "using": null,
+      "algorithm": null,
+      "lock": null,
+      "nameExplicit": true,
+      "name": "INVENTORY_ITEM_expirationDate_index",
+      "entityType": "indexes",
+      "table": "inventory_item"
     },
     {
       "columns": [
-        "id"
+        {
+          "value": "TICKET",
+          "isExpression": false
+        }
       ],
-      "name": "PRIMARY",
-      "table": "inventory",
-      "entityType": "pks"
+      "isUnique": false,
+      "using": null,
+      "algorithm": null,
+      "lock": null,
+      "nameExplicit": true,
+      "name": "INVITE_TICKET_TICKET_index",
+      "entityType": "indexes",
+      "table": "invite_ticket"
     },
     {
       "columns": [
-        "id"
+        {
+          "value": "startedTime",
+          "isExpression": false
+        }
       ],
-      "name": "PRIMARY",
-      "table": "inventory_item",
-      "entityType": "pks"
-    },
-    {
-      "columns": [
-        "ID"
-      ],
-      "name": "PRIMARY",
-      "table": "invite_ticket",
-      "entityType": "pks"
-    },
-    {
-      "columns": [
-        "level"
-      ],
-      "name": "PRIMARY",
-      "table": "level_rep",
-      "entityType": "pks"
-    },
-    {
-      "columns": [
-        "ID"
-      ],
-      "name": "PRIMARY",
-      "table": "lobby",
-      "entityType": "pks"
-    },
-    {
-      "columns": [
-        "id"
-      ],
-      "name": "PRIMARY",
-      "table": "lobby_entrant",
-      "entityType": "pks"
+      "isUnique": false,
+      "using": null,
+      "algorithm": null,
+      "lock": null,
+      "nameExplicit": true,
+      "name": "LOBBY_startedTime_index",
+      "entityType": "indexes",
+      "table": "lobby"
     },
     {
       "columns": [
@@ -7459,6 +7833,22 @@
       "name": "ONLINE_USERS_id_index",
       "entityType": "indexes",
       "table": "online_users"
+    },
+    {
+      "columns": [
+        {
+          "value": "name",
+          "isExpression": false
+        }
+      ],
+      "isUnique": true,
+      "using": null,
+      "algorithm": null,
+      "lock": null,
+      "nameExplicit": true,
+      "name": "PARAMETER_name_index",
+      "entityType": "indexes",
+      "table": "parameter"
     },
     {
       "columns": [
@@ -7483,7 +7873,11 @@
     {
       "columns": [
         {
-          "value": "name",
+          "value": "persona_id",
+          "isExpression": false
+        },
+        {
+          "value": "code",
           "isExpression": false
         }
       ],
@@ -7492,121 +7886,9 @@
       "algorithm": null,
       "lock": null,
       "nameExplicit": true,
-      "name": "PERSONA_name_index",
+      "name": "UK_PERSONA_ID_CODE",
       "entityType": "indexes",
-      "table": "persona"
-    },
-    {
-      "columns": [
-        {
-          "value": "name",
-          "isExpression": false
-        }
-      ],
-      "isUnique": true,
-      "using": null,
-      "algorithm": null,
-      "lock": null,
-      "nameExplicit": true,
-      "name": "PARAMETER_name_index",
-      "entityType": "indexes",
-      "table": "parameter"
-    },
-    {
-      "columns": [
-        {
-          "value": "startedTime",
-          "isExpression": false
-        }
-      ],
-      "isUnique": false,
-      "using": null,
-      "algorithm": null,
-      "lock": null,
-      "nameExplicit": true,
-      "name": "LOBBY_startedTime_index",
-      "entityType": "indexes",
-      "table": "lobby"
-    },
-    {
-      "columns": [
-        {
-          "value": "TICKET",
-          "isExpression": false
-        }
-      ],
-      "isUnique": false,
-      "using": null,
-      "algorithm": null,
-      "lock": null,
-      "nameExplicit": true,
-      "name": "INVITE_TICKET_TICKET_index",
-      "entityType": "indexes",
-      "table": "invite_ticket"
-    },
-    {
-      "columns": [
-        {
-          "value": "category",
-          "isExpression": false
-        }
-      ],
-      "isUnique": false,
-      "using": null,
-      "algorithm": null,
-      "lock": null,
-      "nameExplicit": true,
-      "name": "ACHIEVEMENT_category_index",
-      "entityType": "indexes",
-      "table": "achievement"
-    },
-    {
-      "columns": [
-        {
-          "value": "expirationDate",
-          "isExpression": false
-        }
-      ],
-      "isUnique": false,
-      "using": null,
-      "algorithm": null,
-      "lock": null,
-      "nameExplicit": true,
-      "name": "INVENTORY_ITEM_expirationDate_index",
-      "entityType": "indexes",
-      "table": "inventory_item"
-    },
-    {
-      "columns": [
-        {
-          "value": "EMAIL",
-          "isExpression": false
-        }
-      ],
-      "isUnique": true,
-      "using": null,
-      "algorithm": null,
-      "lock": null,
-      "nameExplicit": true,
-      "name": "USER_email_index",
-      "entityType": "indexes",
-      "table": "user"
-    },
-    {
-      "columns": [
-        {
-          "value": "powerupHash",
-          "isExpression": false
-        }
-      ],
-      "isUnique": false,
-      "using": null,
-      "algorithm": null,
-      "lock": null,
-      "nameExplicit": true,
-      "name": "hash_index",
-      "entityType": "indexes",
-      "table": "used_powerup"
+      "table": "persona_gift"
     },
     {
       "columns": [
@@ -7620,9 +7902,9 @@
       "algorithm": null,
       "lock": null,
       "nameExplicit": true,
-      "name": "REWARD_TABLE_name_index",
+      "name": "PERSONA_name_index",
       "entityType": "indexes",
-      "table": "reward_table"
+      "table": "persona"
     },
     {
       "columns": [
@@ -7739,119 +8021,23 @@
     {
       "columns": [
         {
-          "value": "persona_id",
-          "isExpression": false
-        },
-        {
-          "value": "code",
-          "isExpression": false
-        }
-      ],
-      "isUnique": true,
-      "using": null,
-      "algorithm": null,
-      "lock": null,
-      "nameExplicit": true,
-      "name": "UK_PERSONA_ID_CODE",
-      "entityType": "indexes",
-      "table": "persona_gift"
-    },
-    {
-      "columns": [
-        {
-          "value": "expirationDate",
-          "isExpression": false
-        }
-      ],
-      "isUnique": false,
-      "using": null,
-      "algorithm": null,
-      "lock": null,
-      "nameExplicit": true,
-      "name": "IDX_CAR_expirationDate",
-      "entityType": "indexes",
-      "table": "car"
-    },
-    {
-      "columns": [
-        {
-          "value": "ID",
-          "isExpression": false
-        },
-        {
           "value": "name",
           "isExpression": false
         }
       ],
-      "isUnique": false,
-      "using": null,
-      "algorithm": null,
-      "lock": null,
-      "nameExplicit": true,
-      "name": "test_index",
-      "entityType": "indexes",
-      "table": "event"
-    },
-    {
-      "columns": [
-        {
-          "value": "isEnabled",
-          "isExpression": false
-        },
-        {
-          "value": "minLevel",
-          "isExpression": false
-        },
-        {
-          "value": "maxLevel",
-          "isExpression": false
-        }
-      ],
-      "isUnique": false,
-      "using": null,
-      "algorithm": null,
-      "lock": null,
-      "nameExplicit": true,
-      "name": "EVENT_availability_index",
-      "entityType": "indexes",
-      "table": "event"
-    },
-    {
-      "columns": [
-        {
-          "value": "store_name",
-          "isExpression": false
-        }
-      ],
-      "isUnique": false,
-      "using": null,
-      "algorithm": null,
-      "lock": null,
-      "nameExplicit": true,
-      "name": "store_name_key",
-      "entityType": "indexes",
-      "table": "car_classes"
-    },
-    {
-      "columns": [
-        {
-          "value": "store_name",
-          "isExpression": false
-        }
-      ],
       "isUnique": true,
       "using": null,
       "algorithm": null,
       "lock": null,
       "nameExplicit": true,
-      "name": "store_name_index",
+      "name": "REWARD_TABLE_name_index",
       "entityType": "indexes",
-      "table": "car_classes"
+      "table": "reward_table"
     },
     {
       "columns": [
         {
-          "value": "hash",
+          "value": "powerupHash",
           "isExpression": false
         }
       ],
@@ -7862,28 +8048,12 @@
       "nameExplicit": true,
       "name": "hash_index",
       "entityType": "indexes",
-      "table": "car_classes"
+      "table": "used_powerup"
     },
     {
       "columns": [
         {
-          "value": "ownershipType",
-          "isExpression": false
-        }
-      ],
-      "isUnique": false,
-      "using": null,
-      "algorithm": null,
-      "lock": null,
-      "nameExplicit": true,
-      "name": "IDX_CAR_ownershipType",
-      "entityType": "indexes",
-      "table": "car"
-    },
-    {
-      "columns": [
-        {
-          "value": "productId",
+          "value": "EMAIL",
           "isExpression": false
         }
       ],
@@ -7892,192 +8062,9 @@
       "algorithm": null,
       "lock": null,
       "nameExplicit": true,
-      "name": "BASKETDEFINITION_productId_uindex",
+      "name": "USER_email_index",
       "entityType": "indexes",
-      "table": "basketdefinition"
-    },
-    {
-      "columns": [
-        {
-          "value": "user_id",
-          "isExpression": false
-        },
-        {
-          "value": "ends_at",
-          "isExpression": false
-        }
-      ],
-      "isUnique": false,
-      "using": null,
-      "algorithm": null,
-      "lock": null,
-      "nameExplicit": true,
-      "name": "BAN_existence_index",
-      "entityType": "indexes",
-      "table": "ban"
-    },
-    {
-      "columns": [
-        {
-          "value": "ends_at",
-          "isExpression": false
-        }
-      ],
-      "isUnique": false,
-      "using": null,
-      "algorithm": null,
-      "lock": null,
-      "nameExplicit": true,
-      "name": "BAN_endsAt_index",
-      "entityType": "indexes",
-      "table": "ban"
-    },
-    {
-      "columns": [
-        {
-          "value": "product_id",
-          "isExpression": false
-        }
-      ],
-      "isUnique": true,
-      "using": null,
-      "algorithm": null,
-      "lock": null,
-      "nameExplicit": true,
-      "name": "UK_AMPLIFIERS_product_id",
-      "entityType": "indexes",
-      "table": "amplifiers"
-    },
-    {
-      "columns": [
-        {
-          "value": "internal_reward_description",
-          "isExpression": false
-        }
-      ],
-      "isUnique": false,
-      "using": null,
-      "algorithm": null,
-      "lock": null,
-      "nameExplicit": true,
-      "name": "ACHIEVEMENT_REWARD_internal_reward_description_index",
-      "entityType": "indexes",
-      "table": "achievement_reward"
-    },
-    {
-      "columns": [
-        {
-          "value": "badge_definition_id",
-          "isExpression": false
-        }
-      ],
-      "isUnique": true,
-      "using": null,
-      "algorithm": null,
-      "lock": null,
-      "nameExplicit": true,
-      "name": "UK_ACHIEVEMENT_badge_definition_id",
-      "entityType": "indexes",
-      "table": "achievement"
-    },
-    {
-      "columns": [
-        {
-          "value": "hardwareHash",
-          "isExpression": false
-        }
-      ],
-      "isUnique": false,
-      "using": null,
-      "algorithm": null,
-      "lock": null,
-      "nameExplicit": true,
-      "name": "HARDWARE_INFO_hardwareHash_index",
-      "entityType": "indexes",
-      "table": "hardware_info"
-    },
-    {
-      "columns": [
-        {
-          "value": "carId",
-          "isExpression": false
-        }
-      ],
-      "isUnique": false,
-      "using": null,
-      "algorithm": null,
-      "lock": null,
-      "nameExplicit": true,
-      "name": "car_id_index",
-      "entityType": "indexes",
-      "table": "event_data"
-    },
-    {
-      "columns": [
-        {
-          "value": "finishReason",
-          "isExpression": false
-        }
-      ],
-      "isUnique": false,
-      "using": null,
-      "algorithm": null,
-      "lock": null,
-      "nameExplicit": true,
-      "name": "finishreason_index",
-      "entityType": "indexes",
-      "table": "event_data"
-    },
-    {
-      "columns": [
-        {
-          "value": "personaId",
-          "isExpression": false
-        }
-      ],
-      "isUnique": false,
-      "using": null,
-      "algorithm": null,
-      "lock": null,
-      "nameExplicit": true,
-      "name": "EVENT_DATA_persona_id_index",
-      "entityType": "indexes",
-      "table": "event_data"
-    },
-    {
-      "columns": [
-        {
-          "value": "eventSessionId",
-          "isExpression": false
-        },
-        {
-          "value": "personaId",
-          "isExpression": false
-        }
-      ],
-      "isUnique": true,
-      "using": null,
-      "algorithm": null,
-      "lock": null,
-      "nameExplicit": true,
-      "name": "esi_personaId",
-      "entityType": "indexes",
-      "table": "event_data"
-    },
-    {
-      "columns": [
-        "badge_definition_id"
-      ],
-      "tableTo": "badge_definition",
-      "columnsTo": [
-        "ID"
-      ],
-      "onUpdate": "NO ACTION",
-      "onDelete": "CASCADE",
-      "nameExplicit": true,
-      "name": "FK_ACHIEVEMENT_BADGE_DEFINITION_badge_definition_id",
-      "entityType": "fks",
-      "table": "achievement"
+      "table": "user"
     },
     {
       "columns": [
@@ -8096,6 +8083,21 @@
     },
     {
       "columns": [
+        "badge_definition_id"
+      ],
+      "tableTo": "badge_definition",
+      "columnsTo": [
+        "ID"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "nameExplicit": true,
+      "name": "FK_ACHIEVEMENT_BADGE_DEFINITION_badge_definition_id",
+      "entityType": "fks",
+      "table": "achievement"
+    },
+    {
+      "columns": [
         "product_id"
       ],
       "tableTo": "product",
@@ -8111,21 +8113,6 @@
     },
     {
       "columns": [
-        "banned_by_id"
-      ],
-      "tableTo": "persona",
-      "columnsTo": [
-        "ID"
-      ],
-      "onUpdate": "NO ACTION",
-      "onDelete": "CASCADE",
-      "nameExplicit": true,
-      "name": "FK_BAN_PERSONA_banned_by_id",
-      "entityType": "fks",
-      "table": "ban"
-    },
-    {
-      "columns": [
         "user_id"
       ],
       "tableTo": "user",
@@ -8136,6 +8123,21 @@
       "onDelete": "CASCADE",
       "nameExplicit": true,
       "name": "FK_BAN_USER_user_id",
+      "entityType": "fks",
+      "table": "ban"
+    },
+    {
+      "columns": [
+        "banned_by_id"
+      ],
+      "tableTo": "persona",
+      "columnsTo": [
+        "ID"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "nameExplicit": true,
+      "name": "FK_BAN_PERSONA_banned_by_id",
       "entityType": "fks",
       "table": "ban"
     },
@@ -8186,66 +8188,6 @@
     },
     {
       "columns": [
-        "multiplayer_reward_config_id"
-      ],
-      "tableTo": "event_reward",
-      "columnsTo": [
-        "ID"
-      ],
-      "onUpdate": "NO ACTION",
-      "onDelete": "NO ACTION",
-      "nameExplicit": true,
-      "name": "FK_EVENT_MULTIPLAYER_REWARD_CONFIG_ID",
-      "entityType": "fks",
-      "table": "event"
-    },
-    {
-      "columns": [
-        "private_reward_config_id"
-      ],
-      "tableTo": "event_reward",
-      "columnsTo": [
-        "ID"
-      ],
-      "onUpdate": "NO ACTION",
-      "onDelete": "NO ACTION",
-      "nameExplicit": true,
-      "name": "FK_EVENT_PRIVATE_REWARD_CONFIG_ID",
-      "entityType": "fks",
-      "table": "event"
-    },
-    {
-      "columns": [
-        "singleplayer_reward_config_id"
-      ],
-      "tableTo": "event_reward",
-      "columnsTo": [
-        "ID"
-      ],
-      "onUpdate": "NO ACTION",
-      "onDelete": "NO ACTION",
-      "nameExplicit": true,
-      "name": "FK_EVENT_SINGLEPLAYER_REWARD_CONFIG_ID",
-      "entityType": "fks",
-      "table": "event"
-    },
-    {
-      "columns": [
-        "EVENTID"
-      ],
-      "tableTo": "event",
-      "columnsTo": [
-        "ID"
-      ],
-      "onUpdate": "NO ACTION",
-      "onDelete": "CASCADE",
-      "nameExplicit": true,
-      "name": "FK_EVENT_DATA_EVENT_EVENTID",
-      "entityType": "fks",
-      "table": "event_data"
-    },
-    {
-      "columns": [
         "eventSessionId"
       ],
       "tableTo": "event_session",
@@ -8271,6 +8213,21 @@
       "onDelete": "CASCADE",
       "nameExplicit": true,
       "name": "FK_EVENT_DATA_PERSONA_personaId",
+      "entityType": "fks",
+      "table": "event_data"
+    },
+    {
+      "columns": [
+        "EVENTID"
+      ],
+      "tableTo": "event",
+      "columnsTo": [
+        "ID"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "nameExplicit": true,
+      "name": "FK_EVENT_DATA_EVENT_EVENTID",
       "entityType": "fks",
       "table": "event_data"
     },
@@ -8441,6 +8398,51 @@
     },
     {
       "columns": [
+        "singleplayer_reward_config_id"
+      ],
+      "tableTo": "event_reward",
+      "columnsTo": [
+        "ID"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "nameExplicit": true,
+      "name": "FK_EVENT_SINGLEPLAYER_REWARD_CONFIG_ID",
+      "entityType": "fks",
+      "table": "event"
+    },
+    {
+      "columns": [
+        "multiplayer_reward_config_id"
+      ],
+      "tableTo": "event_reward",
+      "columnsTo": [
+        "ID"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "nameExplicit": true,
+      "name": "FK_EVENT_MULTIPLAYER_REWARD_CONFIG_ID",
+      "entityType": "fks",
+      "table": "event"
+    },
+    {
+      "columns": [
+        "private_reward_config_id"
+      ],
+      "tableTo": "event_reward",
+      "columnsTo": [
+        "ID"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "NO ACTION",
+      "nameExplicit": true,
+      "name": "FK_EVENT_PRIVATE_REWARD_CONFIG_ID",
+      "entityType": "fks",
+      "table": "event"
+    },
+    {
+      "columns": [
         "product_id"
       ],
       "tableTo": "product",
@@ -8453,21 +8455,6 @@
       "name": "FK_GIFT_CODE_PRODUCT_product_id",
       "entityType": "fks",
       "table": "gift_code"
-    },
-    {
-      "columns": [
-        "personaId"
-      ],
-      "tableTo": "persona",
-      "columnsTo": [
-        "ID"
-      ],
-      "onUpdate": "NO ACTION",
-      "onDelete": "CASCADE",
-      "nameExplicit": true,
-      "name": "FK_INVENTORY_PERSONA_personaId",
-      "entityType": "fks",
-      "table": "inventory"
     },
     {
       "columns": [
@@ -8501,6 +8488,21 @@
     },
     {
       "columns": [
+        "personaId"
+      ],
+      "tableTo": "persona",
+      "columnsTo": [
+        "ID"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "nameExplicit": true,
+      "name": "FK_INVENTORY_PERSONA_personaId",
+      "entityType": "fks",
+      "table": "inventory"
+    },
+    {
+      "columns": [
         "USERID"
       ],
       "tableTo": "user",
@@ -8513,21 +8515,6 @@
       "name": "FK_INVITE_TICKET_USER_USERID",
       "entityType": "fks",
       "table": "invite_ticket"
-    },
-    {
-      "columns": [
-        "EVENTID"
-      ],
-      "tableTo": "event",
-      "columnsTo": [
-        "ID"
-      ],
-      "onUpdate": "NO ACTION",
-      "onDelete": "CASCADE",
-      "nameExplicit": true,
-      "name": "FK_LOBBY_EVENT_EVENTID",
-      "entityType": "fks",
-      "table": "lobby"
     },
     {
       "columns": [
@@ -8558,6 +8545,21 @@
       "name": "FK_LOBBY_ENTRANT_PERSONA_PERSONAID",
       "entityType": "fks",
       "table": "lobby_entrant"
+    },
+    {
+      "columns": [
+        "EVENTID"
+      ],
+      "tableTo": "event",
+      "columnsTo": [
+        "ID"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "nameExplicit": true,
+      "name": "FK_LOBBY_EVENT_EVENTID",
+      "entityType": "fks",
+      "table": "lobby"
     },
     {
       "columns": [
@@ -8621,18 +8623,33 @@
     },
     {
       "columns": [
-        "USERID"
+        "achievement_rank_id"
       ],
-      "tableTo": "user",
+      "tableTo": "achievement_rank",
       "columnsTo": [
         "ID"
       ],
       "onUpdate": "NO ACTION",
       "onDelete": "CASCADE",
       "nameExplicit": true,
-      "name": "FK_PERSONA_USER_USERID",
+      "name": "FK_PERSONA_ACHIEVEMENT_RANK_ACHIEVEMENT_RANK_id",
       "entityType": "fks",
-      "table": "persona"
+      "table": "persona_achievement_rank"
+    },
+    {
+      "columns": [
+        "persona_achievement_id"
+      ],
+      "tableTo": "persona_achievement",
+      "columnsTo": [
+        "ID"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "nameExplicit": true,
+      "name": "FK_PERSONA_ACHIEVEMENT_RANK_PERSONA_ACHIEVEMENT_id",
+      "entityType": "fks",
+      "table": "persona_achievement_rank"
     },
     {
       "columns": [
@@ -8666,36 +8683,6 @@
     },
     {
       "columns": [
-        "achievement_rank_id"
-      ],
-      "tableTo": "achievement_rank",
-      "columnsTo": [
-        "ID"
-      ],
-      "onUpdate": "NO ACTION",
-      "onDelete": "CASCADE",
-      "nameExplicit": true,
-      "name": "FK_PERSONA_ACHIEVEMENT_RANK_ACHIEVEMENT_RANK_id",
-      "entityType": "fks",
-      "table": "persona_achievement_rank"
-    },
-    {
-      "columns": [
-        "persona_achievement_id"
-      ],
-      "tableTo": "persona_achievement",
-      "columnsTo": [
-        "ID"
-      ],
-      "onUpdate": "NO ACTION",
-      "onDelete": "CASCADE",
-      "nameExplicit": true,
-      "name": "FK_PERSONA_ACHIEVEMENT_RANK_PERSONA_ACHIEVEMENT_id",
-      "entityType": "fks",
-      "table": "persona_achievement_rank"
-    },
-    {
-      "columns": [
         "badge_definition_id"
       ],
       "tableTo": "badge_definition",
@@ -8726,6 +8713,21 @@
     },
     {
       "columns": [
+        "persona_id"
+      ],
+      "tableTo": "persona",
+      "columnsTo": [
+        "ID"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "nameExplicit": true,
+      "name": "FK_PERSONA_GIFT_PERSONA_persona_id",
+      "entityType": "fks",
+      "table": "persona_gift"
+    },
+    {
+      "columns": [
         "code"
       ],
       "tableTo": "gift_code",
@@ -8741,18 +8743,18 @@
     },
     {
       "columns": [
-        "persona_id"
+        "USERID"
       ],
-      "tableTo": "persona",
+      "tableTo": "user",
       "columnsTo": [
         "ID"
       ],
       "onUpdate": "NO ACTION",
       "onDelete": "CASCADE",
       "nameExplicit": true,
-      "name": "FK_PERSONA_GIFT_PERSONA_persona_id",
+      "name": "FK_PERSONA_USER_USERID",
       "entityType": "fks",
-      "table": "persona_gift"
+      "table": "persona"
     },
     {
       "columns": [
@@ -8861,21 +8863,6 @@
     },
     {
       "columns": [
-        "personaId"
-      ],
-      "tableTo": "persona",
-      "columnsTo": [
-        "ID"
-      ],
-      "onUpdate": "NO ACTION",
-      "onDelete": "CASCADE",
-      "nameExplicit": true,
-      "name": "FK_TREASURE_HUNT_PERSONA_personaId",
-      "entityType": "fks",
-      "table": "treasure_hunt"
-    },
-    {
-      "columns": [
         "reward_table_id"
       ],
       "tableTo": "reward_table",
@@ -8891,18 +8878,18 @@
     },
     {
       "columns": [
-        "eventSessionId"
+        "personaId"
       ],
-      "tableTo": "event_session",
+      "tableTo": "persona",
       "columnsTo": [
         "ID"
       ],
       "onUpdate": "NO ACTION",
       "onDelete": "CASCADE",
       "nameExplicit": true,
-      "name": "FK_USED_POWERUP_EVENT_SESSION_eventSessionId",
+      "name": "FK_TREASURE_HUNT_PERSONA_personaId",
       "entityType": "fks",
-      "table": "used_powerup"
+      "table": "treasure_hunt"
     },
     {
       "columns": [
@@ -8916,6 +8903,21 @@
       "onDelete": "CASCADE",
       "nameExplicit": true,
       "name": "FK_USED_POWERUP_PERSONA_personaId",
+      "entityType": "fks",
+      "table": "used_powerup"
+    },
+    {
+      "columns": [
+        "eventSessionId"
+      ],
+      "tableTo": "event_session",
+      "columnsTo": [
+        "ID"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "nameExplicit": true,
+      "name": "FK_USED_POWERUP_EVENT_SESSION_eventSessionId",
       "entityType": "fks",
       "table": "used_powerup"
     },

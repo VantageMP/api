@@ -1,8 +1,8 @@
-import { sql } from "drizzle-orm";
-import { db } from "@/database/client";
-import { userTable } from "@/database/migrations/schema";
+import { eq, sql } from "drizzle-orm";
+import { db } from "@/database";
+import { userTable } from "@/database/schema";
 import type { CreateUserInput } from "@/models/schema/auth.schema";
-import { hashPassword } from "@/utils/password";
+import { hashPassword, verifyPassword } from "@/utils/password";
 
 export const createUser = async (input: CreateUserInput) => {
 	const newUserData = {
@@ -20,7 +20,23 @@ export const createUser = async (input: CreateUserInput) => {
 	}
 };
 
-export const authenticateUser = async (input: CreateUserInput) => {};
+export const authenticateUser = async (input: CreateUserInput) => {
+	const user = await db.select().from(userTable).where(eq(userTable.email, input.email));
+
+	const firstUser = user[0];
+	if (!firstUser) {
+		throw new Error("USER_NOT_FOUND");
+	}
+
+	const storedUserPassword: string = firstUser.password;
+	const validatePassword = await verifyPassword(input.password, storedUserPassword);
+
+	if (!validatePassword) {
+		throw new Error("INCORRECT_EMAIL_OR_PASSWORD");
+	}
+
+	return { userId: firstUser.id };
+};
 
 export const getPermanentSession = async (_input: { machineID: string; version: number }) => {};
 

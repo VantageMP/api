@@ -24,14 +24,16 @@ export const createUser = async (ctx: Context) => {
 
 export const authenticateUser = async (ctx: Context) => {
 	validateMediaType(ctx);
-
 	const input = createUserSchema.parse(ctx.body);
 
-	try {
-		const user = authService.authenticateUser(input);
-	} catch (err) {
-		console.log(err);
-	}
+	const result = await authService.authenticateUser(input);
+
+	const sessionToken: string = Bun.randomUUIDv7();
+
+	return {
+		userId: result.userId,
+		token: sessionToken,
+	};
 };
 
 export const GetPermanentSession = async (ctx: Context) => {

@@ -23,3 +23,10 @@ export function toXml(data: Record<string, unknown>): Response {
 export function fromXml<T = unknown>(xmlString: string): T {
 	return parser.parse(xmlString) as T;
 }
+
+export function formatJavaDouble(value: number): string {
+	if (Number.isInteger(value)) {
+		return `${value}.0`;
+	}
+	return `${value}`;
+}

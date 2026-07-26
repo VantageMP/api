@@ -1,5 +1,4 @@
-// middleware/errorHandler.middleware.ts
-import { z } from "zod";
+import { ValidationError } from "elysia";
 
 type ErrorHandlerParams = {
 	error: unknown;
@@ -7,7 +6,7 @@ type ErrorHandlerParams = {
 };
 
 export function errorHandler({ error, set }: ErrorHandlerParams) {
-	if (error instanceof z.ZodError) {
+	if (error instanceof ValidationError) {
 		set.status = 400;
 		return { message: "Bad Request: no email or password supplied" };
 	}
@@ -25,6 +24,16 @@ export function errorHandler({ error, set }: ErrorHandlerParams) {
 	if (error instanceof Error && error.message === "USER_NOT_FOUND") {
 		set.status = 400;
 		return { message: "This user is not registered in the server" };
+	}
+
+	if (error instanceof Error && error.message === "MISSING_AUTH_HEADERS") {
+		set.status = 401;
+		return { message: "Missing securityToken or userId header" };
+	}
+
+	if (error instanceof Error && error.message === "INVALID_OR_EXPIRED_SESSION") {
+		set.status = 401;
+		return { message: "Invalid or expired session" };
 	}
 
 	console.error(error);

@@ -39,7 +39,9 @@ export const achievementTable = mysqlTable(
 		updateTrigger: text("update_trigger"),
 		updateValue: text("update_value"),
 		visible: customType({ dataType: () => "bit(1)" })(),
-		badgeDefinitionId: bigint("badge_definition_id", { mode: "number" }).notNull(),
+		badgeDefinitionId: bigint("badge_definition_id", {
+			mode: "number",
+		}).notNull(),
 	},
 	(table) => [
 		index("ACHIEVEMENT_category_index").on(table.category),
@@ -761,7 +763,9 @@ export const inventoryItemTable = mysqlTable(
 		remainingUseCount: int(),
 		resellPrice: int(),
 		status: varchar({ length: 255 }).notNull(),
-		inventoryEntityId: bigint("inventoryEntity_id", { mode: "number" }).notNull(),
+		inventoryEntityId: bigint("inventoryEntity_id", {
+			mode: "number",
+		}).notNull(),
 		productId: varchar({ length: 255 }).notNull(),
 	},
 	(table) => [
@@ -854,7 +858,9 @@ export const personaAchievementRankTable = mysqlTable(
 		id: bigint("ID", { mode: "number" }).autoincrement().primaryKey(),
 		achievedOn: datetime("achieved_on"),
 		state: mysqlEnum(["Locked", "InProgress", "Completed", "RewardWaiting"]),
-		achievementRankId: bigint("achievement_rank_id", { mode: "number" }).notNull(),
+		achievementRankId: bigint("achievement_rank_id", {
+			mode: "number",
+		}).notNull(),
 		personaAchievementId: bigint("persona_achievement_id", {
 			mode: "number",
 		}).notNull(),
@@ -878,7 +884,9 @@ export const personaBadgeTable = mysqlTable(
 	{
 		id: bigint("ID", { mode: "number" }).autoincrement().primaryKey(),
 		slot: int(),
-		badgeDefinitionId: bigint("badge_definition_id", { mode: "number" }).notNull(),
+		badgeDefinitionId: bigint("badge_definition_id", {
+			mode: "number",
+		}).notNull(),
 		personaId: bigint("persona_id", { mode: "number" }).notNull(),
 	},
 	(table) => [
@@ -1023,7 +1031,9 @@ export const rewardTableItemTable = mysqlTable(
 		id: bigint("ID", { mode: "number" }).autoincrement().primaryKey(),
 		dropWeight: double(),
 		script: text().notNull(),
-		rewardTableEntityID: bigint("rewardTableEntity_ID", { mode: "number" }).notNull(),
+		rewardTableEntityID: bigint("rewardTableEntity_ID", {
+			mode: "number",
+		}).notNull(),
 	},
 	(table) => [
 		foreignKey({

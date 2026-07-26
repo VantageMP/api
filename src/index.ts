@@ -4,7 +4,7 @@ import { errorHandler } from "./middleware/errorHandler.middleware";
 import { apiRoutes } from "./routes/index.routes";
 import { fromXml } from "./utils/xml";
 
-const app = new Elysia()
+export const app = new Elysia()
 	.use(openapi())
 	.onError(errorHandler)
 	.onParse(async ({ request, headers }) => {

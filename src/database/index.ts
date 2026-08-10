@@ -1,8 +1,7 @@
 import { drizzle } from "drizzle-orm/mysql2";
 import { env } from "@/env";
-import * as schema from "./migrations/schema";
+import { relations } from "./relations";
 
 export const db = drizzle(env.DATABASE_URL, {
-	schema,
-	casing: "snake_case",
+	relations,
 });

@@ -140,45 +140,6 @@ CREATE TABLE `chat_room` (
 	`shortName` varchar(255)
 );
 --> statement-breakpoint
-CREATE TABLE `persona` (
-	`ID` bigint AUTO_INCREMENT PRIMARY KEY,
-	`boost` double NOT NULL,
-	`cash` double NOT NULL,
-	`curCarIndex` int NOT NULL,
-	`iconIndex` int NOT NULL,
-	`level` int NOT NULL,
-	`motto` varchar(255),
-	`name` varchar(255),
-	`percentToLevel` float NOT NULL,
-	`rating` double NOT NULL,
-	`rep` double NOT NULL,
-	`repAtCurrentLevel` int NOT NULL,
-	`score` int NOT NULL,
-	`USERID` bigint,
-	`created` datetime,
-	`badges` varchar(2048),
-	`first_login` datetime,
-	`last_login` datetime,
-	`numCarSlots` int NOT NULL DEFAULT 250,
-	CONSTRAINT `PERSONA_name_index` UNIQUE INDEX(`name`)
-);
---> statement-breakpoint
-CREATE TABLE `user` (
-	`ID` bigint AUTO_INCREMENT PRIMARY KEY,
-	`EMAIL` varchar(255),
-	`PASSWORD` varchar(50),
-	`premium` bit(1) NOT NULL DEFAULT b'0',
-	`isAdmin` bit(1),
-	`HWID` varchar(255),
-	`IP_ADDRESS` varchar(255),
-	`created` datetime,
-	`lastLogin` datetime,
-	`gameHardwareHash` varchar(255),
-	`isLocked` bit(1),
-	`selectedPersonaIndex` int DEFAULT 0,
-	CONSTRAINT `USER_email_index` UNIQUE INDEX(`EMAIL`)
-);
---> statement-breakpoint
 CREATE TABLE `event` (
 	`ID` int AUTO_INCREMENT PRIMARY KEY,
 	`eventModeId` int NOT NULL,
@@ -368,26 +329,49 @@ CREATE TABLE `online_users` (
 	CONSTRAINT `ONLINE_USERS_id_index` UNIQUE INDEX(`ID`)
 );
 --> statement-breakpoint
-CREATE TABLE `paint` (
-	`id` bigint AUTO_INCREMENT PRIMARY KEY,
-	`paintGroup` int,
-	`hue` int NOT NULL,
-	`sat` int NOT NULL,
-	`slot` int NOT NULL,
-	`paintVar` int,
-	`carId` bigint NOT NULL
-);
---> statement-breakpoint
-CREATE TABLE `parameter` (
-	`name` varchar(255) PRIMARY KEY,
-	`value` varchar(255),
-	CONSTRAINT `PARAMETER_name_index` UNIQUE INDEX(`name`)
+CREATE TABLE `persona` (
+	`ID` bigint AUTO_INCREMENT PRIMARY KEY,
+	`boost` double NOT NULL,
+	`cash` double NOT NULL,
+	`curCarIndex` int NOT NULL,
+	`iconIndex` int NOT NULL,
+	`level` int NOT NULL,
+	`motto` varchar(255),
+	`name` varchar(255),
+	`percentToLevel` float NOT NULL,
+	`rating` double NOT NULL,
+	`rep` double NOT NULL,
+	`repAtCurrentLevel` int NOT NULL,
+	`score` int NOT NULL,
+	`USERID` bigint,
+	`created` datetime,
+	`badges` varchar(2048),
+	`first_login` datetime,
+	`last_login` datetime,
+	`numCarSlots` int NOT NULL DEFAULT 250,
+	CONSTRAINT `PERSONA_name_index` UNIQUE INDEX(`name`)
 );
 --> statement-breakpoint
 CREATE TABLE `reward_table` (
 	`ID` bigint AUTO_INCREMENT PRIMARY KEY,
 	`name` varchar(255),
 	CONSTRAINT `REWARD_TABLE_name_index` UNIQUE INDEX(`name`)
+);
+--> statement-breakpoint
+CREATE TABLE `user` (
+	`ID` bigint AUTO_INCREMENT PRIMARY KEY,
+	`EMAIL` varchar(255),
+	`PASSWORD` varchar(50),
+	`premium` bit(1) NOT NULL DEFAULT b'0',
+	`isAdmin` bit(1),
+	`HWID` varchar(255),
+	`IP_ADDRESS` varchar(255),
+	`created` datetime,
+	`lastLogin` datetime,
+	`gameHardwareHash` varchar(255),
+	`isLocked` bit(1),
+	`selectedPersonaIndex` int DEFAULT 0,
+	CONSTRAINT `USER_email_index` UNIQUE INDEX(`EMAIL`)
 );
 --> statement-breakpoint
 CREATE TABLE `amplifiers` (
@@ -422,6 +406,22 @@ CREATE TABLE `inventory_item` (
 	`status` varchar(255) NOT NULL,
 	`inventoryEntity_id` bigint NOT NULL,
 	`productId` varchar(255) NOT NULL
+);
+--> statement-breakpoint
+CREATE TABLE `paint` (
+	`id` bigint AUTO_INCREMENT PRIMARY KEY,
+	`paintGroup` int,
+	`hue` int NOT NULL,
+	`sat` int NOT NULL,
+	`slot` int NOT NULL,
+	`paintVar` int,
+	`carId` bigint NOT NULL
+);
+--> statement-breakpoint
+CREATE TABLE `parameter` (
+	`name` varchar(255) PRIMARY KEY,
+	`value` varchar(255),
+	CONSTRAINT `PARAMETER_name_index` UNIQUE INDEX(`name`)
 );
 --> statement-breakpoint
 CREATE TABLE `performancepart` (

@@ -1,13 +1,18 @@
-// models/schemas/auth.schema.ts
-import { z } from "zod";
+import { t } from "elysia";
 
-export const getPermanentSessionSchema = z.object({
-	GetPermanentSessionData: z.object({
-		machineID: z.coerce.string(),
-		version: z.coerce.number(),
-		// os campos @_xmlns e @_xmlns:i vêm junto se você não filtrar --
-		// decida se precisa validá-los ou só ignorá-los (Zod ignora extras por padrão se não usar .strict())
+export const getPermanentSessionSchema = t.Object({
+	GetPermanentSessionData: t.Object({
+		machineID: t.String(),
+		version: t.Numeric(),
 	}),
 });
 
-export type GetPermanentSessionInput = z.infer<typeof getPermanentSessionSchema>;
+export const createUserSchema = t.Object({
+	email: t.String({ format: "email" }),
+	password: t.String(),
+	// ticket: t.Nullable(t.String()),
+});
+
+export type GetPermanentSessionInput = typeof getPermanentSessionSchema.static;
+
+export type CreateUserInput = typeof createUserSchema.static;

@@ -1,7 +1,8 @@
-import { z } from "zod";
+import { Value } from "@sinclair/typebox/value";
+import { t } from "elysia";
 
-const envSchema = z.object({
-	DATABASE_URL: z.url().startsWith("mysql://"),
+const envSchema = t.Object({
+	DATABASE_URL: t.String({ pattern: "^mysql://" }),
 });
 
-export const env = envSchema.parse(Bun.env);
+export const env = Value.Parse(envSchema, Bun.env);

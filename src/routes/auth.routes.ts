@@ -1,8 +1,14 @@
 import { Elysia } from "elysia";
-import * as AuthController from "@/controllers/auth.controller";
+import * as authController from "@/controllers/auth.controller";
+import { requireAuth } from "@/middleware/auth.middleware";
+import { requireJsonContentType } from "@/middleware/jsonContentType.middleware";
 
-export const authRoutes = new Elysia({ prefix: "/auth" })
-	.post("/permanent-session", AuthController.GetPermanentSession)
-	.post("/login-persona", AuthController.SecureLoginPersona)
-	.post("/logout", AuthController.SecureLogout)
-	.post("/logout-persona", AuthController.secureLogoutPersona);
+export const authRoutes = new Elysia({ prefix: "/User" })
+	.group("", (app) =>
+		app
+			.onBeforeHandle(requireJsonContentType)
+			.post("/modernRegister", authController.createUser)
+			.post("/modernAuth", authController.authenticateUser),
+	)
+	.use(requireAuth)
+	.post("/GetPermanentSession", authController.getPermanentSession);

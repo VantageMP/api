@@ -1,4 +1,4 @@
-import { Elysia } from "elysia";
+import Elysia from "elysia";
 import * as authController from "@/controllers/auth.controller";
 import { requireAuth } from "@/middleware/auth.middleware";
 import { requireJsonContentType } from "@/middleware/jsonContentType.middleware";

@@ -1,3 +1,4 @@
+import { XML } from "bun";
 import { eq, sql } from "drizzle-orm";
 import { db } from "@/database";
 import { personaTable, userTable } from "@/database/schema";
@@ -11,10 +12,12 @@ export const createUser = async (input: CreateUserInput) => {
 		email: input.email,
 		password: await hashPassword(input.password),
 	};
+
 	const newUser = await db
 		.insert(userTable)
 		.values(newUserData)
 		.onDuplicateKeyUpdate({ set: { id: sql`id` } });
+
 	if (newUser[0].insertId === 0) {
 		throw new Error("EMAIL_ALREADY_REGISTERED");
 	}
@@ -22,17 +25,23 @@ export const createUser = async (input: CreateUserInput) => {
 
 export const authenticateUser = async (input: CreateUserInput) => {
 	const user = await db.select().from(userTable).where(eq(userTable.email, input.email));
+
 	const firstUser = user[0];
+
 	if (!firstUser) {
 		throw new Error("USER_NOT_FOUND");
 	}
+
 	const storedUserPassword: string = firstUser.password;
 	const validatePassword = await verifyPassword(input.password, storedUserPassword);
+
 	if (!validatePassword) {
 		throw new Error("INCORRECT_EMAIL_OR_PASSWORD");
 	}
+
 	const sessionToken: string = Bun.randomUUIDv7();
 	createSession(sessionToken, firstUser.id);
+
 	return { userId: firstUser.id, token: sessionToken };
 };
 
@@ -49,7 +58,7 @@ export const getPermanentSession = async (userId: number, currentToken: string) 
 
 	const personas = await db.select().from(personaTable).where(eq(personaTable.userid, userId));
 
-	return {
+	const returnedUser = {
 		UserInfo: {
 			defaultPersonaIdx: user.selectedPersonaIndex ?? 0,
 			personas: {
@@ -77,4 +86,6 @@ export const getPermanentSession = async (userId: number, currentToken: string) 
 			},
 		},
 	};
+
+	return XML.stringify(returnedUser);
 };

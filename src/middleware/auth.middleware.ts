@@ -1,7 +1,7 @@
 import { Elysia } from "elysia";
 import { getSession } from "@/services/session.store";
 
-export const requireAuth = new Elysia().derive({ as: "scoped" }, async ({ headers, set }) => {
+export const requireAuth = new Elysia().resolve({ as: "scoped" }, async ({ headers, set }) => {
 	const token = headers.securitytoken;
 	const userId = headers.userid;
 

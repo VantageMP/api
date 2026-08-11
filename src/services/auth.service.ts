@@ -87,5 +87,5 @@ export const getPermanentSession = async (userId: number, currentToken: string) 
 		},
 	};
 
-	return XML.stringify(returnedUser);
+	return returnedUser;
 };

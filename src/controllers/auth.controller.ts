@@ -4,7 +4,7 @@ import { createUserSchema } from "@/models/schema/auth.schema";
 import * as authService from "@/services/auth.service";
 
 function validateMediaType(ctx: Context) {
-	const contentType = ctx.headers["content-type"] ?? "";
+	const contentType = ctx.headers["content-type"] ?? "";	
 	if (!contentType.includes("application/json")) {
 		ctx.set.status = 415;
 		return { message: "Unsupported Media Type" };
@@ -36,5 +36,5 @@ export const getPermanentSession = async (
 ) => {
 	const result = await authService.getPermanentSession(ctx.userId, ctx.securityToken);
 
-	return result;
+	return XML.stringify(result);
 };

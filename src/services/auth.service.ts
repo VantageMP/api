@@ -6,34 +6,46 @@ import { hashPassword, verifyPassword } from "@/utils/password";
 import { formatJavaDouble } from "@/utils/xml";
 import { createSession, destroySession } from "./session.store";
 
-export const createUser = async (input: CreateUserInput) => {
+export const createUser = async (input: CreateUserInput): Promise<number> => {
 	const newUserData = {
 		email: input.email,
 		password: await hashPassword(input.password),
+		hwid: input.hwid,
 	};
 	const newUser = await db
 		.insert(userTable)
 		.values(newUserData)
 		.onDuplicateKeyUpdate({ set: { id: sql`id` } });
+
 	if (newUser[0].insertId === 0) {
 		throw new Error("EMAIL_ALREADY_REGISTERED");
 	}
+
+	return newUser[0].insertId;
 };
 
 export const authenticateUser = async (input: CreateUserInput) => {
 	const user = await db.select().from(userTable).where(eq(userTable.email, input.email));
+
 	const firstUser = user[0];
+
 	if (!firstUser) {
 		throw new Error("USER_NOT_FOUND");
 	}
+
 	const storedUserPassword: string = firstUser.password;
 	const validatePassword = await verifyPassword(input.password, storedUserPassword);
+
 	if (!validatePassword) {
 		throw new Error("INCORRECT_EMAIL_OR_PASSWORD");
 	}
+
 	const sessionToken: string = Bun.randomUUIDv7();
 	createSession(sessionToken, firstUser.id);
-	return { userId: firstUser.id, token: sessionToken };
+
+	const loginStatus = { LoginStatusVO: { userId: firstUser.id, token: sessionToken } };
+
+	return loginStatus;
 };
 
 export const getPermanentSession = async (userId: number, currentToken: string) => {
@@ -49,7 +61,7 @@ export const getPermanentSession = async (userId: number, currentToken: string) 
 
 	const personas = await db.select().from(personaTable).where(eq(personaTable.userid, userId));
 
-	return {
+	const returnedUser = {
 		UserInfo: {
 			defaultPersonaIdx: user.selectedPersonaIndex ?? 0,
 			personas: {
@@ -77,4 +89,6 @@ export const getPermanentSession = async (userId: number, currentToken: string) 
 			},
 		},
 	};
+
+	return returnedUser;
 };

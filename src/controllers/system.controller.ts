@@ -1,7 +1,7 @@
-import type { Context } from "elysia";
-import { touchSession } from "@/services/session.store";
+import * as systemService from "@/services/system.service";
 
-export const heartbeat = async (ctx: Context) => {
-	touchSession(ctx.sessionToken);
-	return {};
+export const systemInformation = async () => {
+	const result = await systemService.systemInformation();
+
+	return result;
 };

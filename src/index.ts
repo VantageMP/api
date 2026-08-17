@@ -2,10 +2,12 @@ import openapi from "@elysia/openapi";
 import { XML } from "bun";
 import Elysia from "elysia";
 import { errorHandler } from "./middleware/errorHandler.middleware";
+import { logger } from "./middleware/logger.middleware";
 import { apiRoutes } from "./routes/index.routes";
 
 export const app = new Elysia()
 	.use(openapi())
+	.use(logger)
 	.onError(errorHandler)
 	.onParse(async ({ request, headers }) => {
 		const contentType = headers["content-type"] ?? "";

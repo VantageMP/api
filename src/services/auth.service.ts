@@ -1,4 +1,3 @@
-import { XML } from "bun";
 import { eq, sql } from "drizzle-orm";
 import { db } from "@/database";
 import { personaTable, userTable } from "@/database/schema";
@@ -7,12 +6,12 @@ import { hashPassword, verifyPassword } from "@/utils/password";
 import { formatJavaDouble } from "@/utils/xml";
 import { createSession, destroySession } from "./session.store";
 
-export const createUser = async (input: CreateUserInput) => {
+export const createUser = async (input: CreateUserInput): Promise<number> => {
 	const newUserData = {
 		email: input.email,
 		password: await hashPassword(input.password),
+		hwid: input.hwid,
 	};
-
 	const newUser = await db
 		.insert(userTable)
 		.values(newUserData)
@@ -21,6 +20,8 @@ export const createUser = async (input: CreateUserInput) => {
 	if (newUser[0].insertId === 0) {
 		throw new Error("EMAIL_ALREADY_REGISTERED");
 	}
+
+	return newUser[0].insertId;
 };
 
 export const authenticateUser = async (input: CreateUserInput) => {
@@ -42,7 +43,9 @@ export const authenticateUser = async (input: CreateUserInput) => {
 	const sessionToken: string = Bun.randomUUIDv7();
 	createSession(sessionToken, firstUser.id);
 
-	return { userId: firstUser.id, token: sessionToken };
+	const loginStatus = { LoginStatusVO: { userId: firstUser.id, token: sessionToken } };
+
+	return loginStatus;
 };
 
 export const getPermanentSession = async (userId: number, currentToken: string) => {

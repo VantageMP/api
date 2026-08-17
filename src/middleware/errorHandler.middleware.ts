@@ -26,11 +26,6 @@ export function errorHandler({ error, set }: ErrorHandlerParams) {
 		return { message: "This user is not registered in the server" };
 	}
 
-	if (error instanceof Error && error.message === "MISSING_AUTH_HEADERS") {
-		set.status = 401;
-		return { message: "Missing securityToken or userId header" };
-	}
-
 	if (error instanceof Error && error.message === "INVALID_OR_EXPIRED_SESSION") {
 		set.status = 401;
 		return { message: "Invalid or expired session" };

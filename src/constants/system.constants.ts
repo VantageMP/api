@@ -26,4 +26,14 @@ export const PARAMETER_KEYS = {
 	requireTicket: "TICKET_TOKEN",
 } as const;
 
+export const MODDING_PARAMETER_KEYS = {
+	enabled: "MODDING_ENABLED",
+	serverID: "MODDING_SERVER_ID",
+	basePath: "MODDING_BASE_PATH",
+	features: "MODDING_FEATURES",
+} as const;
+
 export type ParameterKey = (typeof PARAMETER_KEYS)[keyof typeof PARAMETER_KEYS];
+
+export type ModdingParameterKey =
+	(typeof MODDING_PARAMETER_KEYS)[keyof typeof MODDING_PARAMETER_KEYS];

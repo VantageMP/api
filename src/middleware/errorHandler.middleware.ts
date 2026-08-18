@@ -31,6 +31,10 @@ export function errorHandler({ error, set }: ErrorHandlerParams) {
 		return { message: "Invalid or expired session" };
 	}
 
+	if (error instanceof Error && error.message === "MODDING_DISABLED") {
+		return new Response(null, { status: 404 });
+	}
+
 	console.error(error);
 	set.status = 500;
 	return { message: "Internal server error" };

@@ -5,3 +5,9 @@ export const systemInformation = async () => {
 
 	return result;
 };
+
+export const modInfo = async () => {
+	const result = await systemService.modInfo();
+
+	return result;
+};

@@ -5,6 +5,7 @@ type Session = {
 	loginAt: number;
 	lastHeartbeat: number;
 	hasActivePersona: boolean;
+	activePersonaId: number;
 };
 
 const sessions = new Map<string, Session>();
@@ -16,6 +17,7 @@ export const createSession = (token: string, userId: number) => {
 		loginAt: now,
 		lastHeartbeat: now,
 		hasActivePersona: false,
+		activePersonaId: 0,
 	});
 };
 
@@ -47,6 +49,14 @@ export function touchSession(token: string) {
 export const setActivePersona = (token: string, active: boolean) => {
 	const session = sessions.get(token);
 	if (session) session.hasActivePersona = active;
+};
+
+export const setActivePersonaId = (token: string, personaId: number) => {
+	const session = sessions.get(token);
+	if (session) {
+		session.activePersonaId = personaId;
+		session.hasActivePersona = personaId !== 0;
+	}
 };
 
 export const destroySession = (token: string) => {

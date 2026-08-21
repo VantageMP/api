@@ -697,6 +697,8 @@ export const userTable = mysqlTable(
 		gameHardwareHash: varchar({ length: 255 }),
 		isLocked: customType({ dataType: () => "bit(1)" })(),
 		selectedPersonaIndex: int().default(0),
+		// write-only: false (criação/logout) | true (SendHardwareInfo)
+		isOnline: boolean().default(false).notNull(),
 	},
 	(table) => [uniqueIndex("USER_email_index").on(table.email)],
 );

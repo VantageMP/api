@@ -4,7 +4,7 @@ import { personaTable, userTable } from "@/database/schema";
 import type { CreateUserInput } from "@/models/schema/auth.schema";
 import { hashPassword, verifyPassword } from "@/utils/password";
 import { formatJavaDouble } from "@/utils/xml";
-import { createSession, destroySession } from "./session.store";
+import { createSession, destroySession, getSession, setActivePersonaId } from "./session.store";
 
 export const createUser = async (input: CreateUserInput): Promise<number> => {
 	const newUserData = {
@@ -43,7 +43,12 @@ export const authenticateUser = async (input: CreateUserInput) => {
 	const sessionToken: string = Bun.randomUUIDv7();
 	createSession(sessionToken, firstUser.id);
 
-	const loginStatus = { LoginStatusVO: { userId: firstUser.id, token: sessionToken } };
+	const loginStatus = {
+		LoginStatusVO: {
+			UserId: firstUser.id,
+			LoginToken: sessionToken,
+		},
+	};
 
 	return loginStatus;
 };
@@ -92,3 +97,18 @@ export const getPermanentSession = async (userId: number, currentToken: string) 
 
 	return returnedUser;
 };
+
+export const secureLogout = async (userId: number, token: string): Promise<void> => {
+	const session = await getSession(token);
+
+	if (session?.activePersonaId !== 0 && session?.activePersonaId) {
+		// TODO: remover presença online da persona (PresenceBO) quando implementado
+		setActivePersonaId(token, 0);
+	}
+
+	destroySession(token);
+
+	await db.update(userTable).set({ isOnline: false }).where(eq(userTable.id, userId));
+};
+
+export const getFriendList = async (_userId: number, _token: string) => {};

@@ -1,7 +1,19 @@
 import { Elysia } from "elysia";
 
-export const logger = new Elysia({ name: "logger" }).onRequest(({ request }) => {
-	const { method } = request;
-	const { pathname } = new URL(request.url);
-	console.log(`[${new Date().toISOString()}] ${method} ${pathname}`);
-});
+function formatLogMessage(request: Request, status: number): string {
+	const { method, url } = request;
+	const { pathname } = new URL(url);
+	const timestamp = new Date().toISOString();
+
+	return `[${timestamp}] ${status} - ${method} ${pathname}`;
+}
+
+export const logger = new Elysia({ name: "logger" }).onAfterResponse(
+	{ as: "global" },
+	({ request, set, response }) => {
+		const isResponseObj = response instanceof Response;
+		const status = (isResponseObj ? response.status : set.status) ?? 200;
+
+		console.log(formatLogMessage(request, status as number));
+	},
+);

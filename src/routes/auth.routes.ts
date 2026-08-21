@@ -37,4 +37,10 @@ export const authRoutes = new Elysia({ prefix: "/User" })
 	.use(requireAuth)
 	.post("/GetPermanentSession", ({ userId, securityToken }) =>
 		authController.getPermanentSession({ userId, securityToken }),
+	)
+	.post("/SecureLogout", ({ userId, securityToken }) =>
+		authController.secureLogout({ userId, securityToken }),
+	)
+	.get("/getfriendlistfromuserid", ({ userId, securityToken }) =>
+		authController.getFriendList({ userId, securityToken }),
 	);

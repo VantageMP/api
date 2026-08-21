@@ -10,33 +10,21 @@ export const requireAuth = new Elysia()
 		}),
 	})
 	.resolve({ as: "scoped" }, async ({ headers, set }) => {
-		const validatedHeaders = headers as unknown as {
-			userid: string;
-			securitytoken: string;
-		};
+		const rawHeaders = headers as Record<string, string | undefined>;
+		const rawUserId = rawHeaders.userid ?? rawHeaders.userId ?? rawHeaders.USERID;
+		const rawSecurityToken =
+			rawHeaders.securitytoken ?? rawHeaders.securityToken ?? rawHeaders.SECURITYTOKEN;
 
-		const numericUserId = Number(validatedHeaders.userid);
+		const numericUserId = Number(rawUserId);
+		const session = rawSecurityToken ? await getSession(rawSecurityToken) : null;
 
-		const session = await getSession(validatedHeaders.securitytoken);
-
-		console.log("DEBUG numericUserId:", numericUserId, typeof numericUserId);
-		console.log("DEBUG session:", session);
-		console.log(
-			"DEBUG comparison:",
-			session?.userId,
-			"!==",
-			numericUserId,
-			"=",
-			session?.userId !== numericUserId,
-		);
-
-		if (!session || session.userId !== numericUserId) {
+		if (!session || !rawSecurityToken || session.userId !== numericUserId) {
 			set.status = 401;
 			throw new Error("INVALID_OR_EXPIRED_SESSION");
 		}
 
 		return {
 			userId: session.userId,
-			securityToken: validatedHeaders.securitytoken,
+			securityToken: rawSecurityToken,
 		};
 	});

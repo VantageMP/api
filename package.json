@@ -6,7 +6,9 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"dev": "bun --bun run --watch src/index.ts",
 		"start": "bun --bun run src/index.ts",
-		"lint": "bunx --bun @biomejs/biome check --write"
+		"lint": "bunx --bun @biomejs/biome check --write",
+		"generate": "bunx --bun drizzle-kit generate",
+		"migrate": "bunx --bun drizzle-kit migrate"
 	},
 	"dependencies": {
 		"@elysia/openapi": "^1.4.15",

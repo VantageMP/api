@@ -13,6 +13,7 @@ export const app = new Elysia()
 		const contentType = headers["content-type"] ?? "";
 		if (contentType.includes("application/xml") || contentType.includes("text/xml")) {
 			const rawText = await request.text();
+			if (!rawText) return;
 			return XML.parse(rawText);
 		}
 	})

@@ -60,8 +60,9 @@ export const authenticateUser = async ({
 	const input = Value.Parse(createUserSchema, rawInput);
 
 	const result = await authService.authenticateUser(input);
+	const xmlResult = XML.stringify(result);
 
-	return XML.stringify(result);
+	return xmlResult;
 };
 
 export const modernAuthenticateUser = async ({
@@ -91,4 +92,27 @@ export const getPermanentSession = async ({
 	const result = await authService.getPermanentSession(userId, securityToken);
 
 	return XML.stringify(result);
+};
+
+export const secureLogout = async ({
+	userId,
+	securityToken,
+}: {
+	userId: number;
+	securityToken: string;
+}) => {
+	await authService.secureLogout(userId, securityToken);
+	return "";
+};
+
+export const getFriendList = async ({
+	userId,
+	securityToken,
+}: {
+	userId: number;
+	securityToken: string;
+}) => {
+	await authService.getFriendList(userId, securityToken);
+
+	return;
 };

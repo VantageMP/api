@@ -1,60 +1,76 @@
+import { XML } from "bun";
 import { type ErrorHandler, NotFoundError, ValidationError } from "elysia";
+import { EngineError } from "@/constants/error.codes";
+import { EngineException, ModernException } from "@/errors/engine.exception";
+
+type ErrorSet = { status?: number | string; headers: Record<string, string> };
 
 export function errorHandler(ctx: Parameters<ErrorHandler>[0]) {
-	const { code, error, set } = ctx;
-	if (code === "NOT_FOUND" || error instanceof NotFoundError) {
-		set.status = 404;
-		return { message: "Not Found" };
-	}
+	const { error, set } = ctx as { error: unknown; set: ErrorSet };
 
-	if (error instanceof ValidationError) {
-		set.status = 400;
-		return { message: "Bad Request: validation failed" };
-	}
+	if (error instanceof ModernException) return handleModernError(error, set);
 
-	if (error instanceof Error) {
-		const knownError = handleKnownBusinessErrors(error.message, set);
-		if (knownError) return knownError;
-	}
+	if (isAuthError(ctx)) return handleAuthError(set);
 
-	return handleUnexpectedError(error, set);
+	return handleEngineError(error, set);
 }
 
-function handleKnownBusinessErrors(message: string, set: { status?: number | string }) {
-	switch (message) {
-		case "EMAIL_ALREADY_REGISTERED":
-			set.status = 400;
-			return { message: "Email already registered" };
-		case "INCORRECT_EMAIL_OR_PASSWORD":
-			set.status = 400;
-			return { message: "Wrong e-mail or password" };
-		case "USER_NOT_FOUND":
-			set.status = 400;
-			return { message: "This user is not registered in the server" };
-		case "INVALID_OR_EXPIRED_SESSION":
-			set.status = 401;
-			return { message: "Invalid or expired session" };
-		case "MODDING_DISABLED":
-			set.status = 404;
-			return { message: "Modding is disabled" };
-		default:
-			return null;
-	}
+function isAuthError(ctx: Parameters<ErrorHandler>[0]): boolean {
+	const { code, error } = ctx as { code: unknown; error: unknown };
+
+	return (
+		(error instanceof Error && error.message === "INVALID_OR_EXPIRED_SESSION") ||
+		(code === "VALIDATION" && error instanceof ValidationError)
+	);
 }
 
-function handleUnexpectedError(error: unknown, set: { status?: number | string }) {
-	const errorMessage = error instanceof Error ? error.message : "Unknown error";
-	const errorStack = error instanceof Error ? error.stack : undefined;
+function handleModernError(error: ModernException, set: ErrorSet) {
+	set.status = error.statusCode;
+	set.headers["content-type"] = "application/json";
+	return { message: error.message };
+}
 
+function handleAuthError(set: ErrorSet) {
+	set.status = 401;
+	return new Response(null, { status: 401 });
+}
+
+function handleEngineError(error: unknown, set: ErrorSet) {
+	const isNotFound = error instanceof NotFoundError;
+	const isEngine = error instanceof EngineException;
+
+	const code = isNotFound ? EngineError.NOT_FOUND : isEngine ? error.code : -747;
+
+	if (!isEngine && !isNotFound) logUnexpectedError(error);
+
+	set.status = 503;
+	set.headers["content-type"] = "application/xml";
+
+	return XML.stringify(buildEngineExceptionXml(code, error));
+}
+
+function buildEngineExceptionXml(code: number, error: unknown) {
+	const message = error instanceof Error ? error.message : "Unknown error";
+
+	return {
+		EngineExceptionTrans: {
+			ErrorCode: code,
+			InnerException: {
+				ErrorCode: code,
+				StackTrace: message,
+			},
+			StackTrace: message,
+		},
+	};
+}
+
+function logUnexpectedError(error: unknown) {
 	console.error(
 		JSON.stringify({
 			level: "ERROR",
 			timestamp: new Date().toISOString(),
-			message: errorMessage,
-			stack: errorStack,
+			message: error instanceof Error ? error.message : "Unknown error",
+			stack: error instanceof Error ? error.stack : undefined,
 		}),
 	);
-
-	set.status = 500;
-	return { message: "Internal server error" };
 }

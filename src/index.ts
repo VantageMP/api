@@ -17,6 +17,14 @@ export const app = new Elysia()
 			return XML.parse(rawText);
 		}
 	})
+	.onAfterHandle(({ response, set }) => {
+		if (set.headers["content-type"] === "application/json") return;
+		if (response === "" || response == null) return;
+		if (typeof response !== "object") return;
+
+		set.headers["content-type"] = "application/xml";
+		return XML.stringify(response as Record<string, unknown>);
+	})
 	.use(apiRoutes)
 	.listen(3000);
 

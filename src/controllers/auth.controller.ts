@@ -1,5 +1,4 @@
 import { Value } from "@sinclair/typebox/value";
-import { XML } from "bun";
 import {
 	type CreateUserInput,
 	createUserSchema,
@@ -14,20 +13,13 @@ export const createUser = async ({
 	query: CreateUserInput;
 	headers: HwidHeaderInput;
 }) => {
-	console.log("query mizera", query);
 	const hwid = headers["x-hwid"];
 	const rawInput = { email: query.email, password: query.password, hwid };
 	const input = Value.Parse(createUserSchema, rawInput);
 
 	const userId = await authService.createUser(input);
 
-	const userLogin = {
-		LoginStatusVO: {
-			UserId: userId,
-		},
-	};
-
-	return XML.stringify(userLogin);
+	return { LoginStatusVO: { UserId: userId } };
 };
 
 export const modernCreateUser = async ({
@@ -43,9 +35,7 @@ export const modernCreateUser = async ({
 
 	await authService.createUser(input);
 
-	return {
-		message: "Account created! You can now log in.",
-	};
+	return { message: "Account created! You can now log in." };
 };
 
 export const authenticateUser = async ({
@@ -59,10 +49,7 @@ export const authenticateUser = async ({
 	const rawInput = { ...query, hwid };
 	const input = Value.Parse(createUserSchema, rawInput);
 
-	const result = await authService.authenticateUser(input);
-	const xmlResult = XML.stringify(result);
-
-	return xmlResult;
+	return authService.authenticateUser(input);
 };
 
 export const modernAuthenticateUser = async ({
@@ -72,14 +59,11 @@ export const modernAuthenticateUser = async ({
 	body: CreateUserInput;
 	headers: HwidHeaderInput;
 }) => {
-	console.log("body, headers");
 	const whid = headers["x-hwid"];
 	const rawInput = { ...body, whid };
-
 	const input = Value.Parse(createUserSchema, rawInput);
-	const result = await authService.authenticateUser(input);
 
-	return result;
+	return authService.authenticateUser(input);
 };
 
 export const getPermanentSession = async ({
@@ -89,9 +73,7 @@ export const getPermanentSession = async ({
 	userId: number;
 	securityToken: string;
 }) => {
-	const result = await authService.getPermanentSession(userId, securityToken);
-
-	return XML.stringify(result);
+	return authService.getPermanentSession(userId, securityToken);
 };
 
 export const secureLogout = async ({
@@ -112,7 +94,5 @@ export const getFriendList = async ({
 	userId: number;
 	securityToken: string;
 }) => {
-	await authService.getFriendList(userId, securityToken);
-
-	return;
+	return authService.getFriendList(userId, securityToken);
 };

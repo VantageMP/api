@@ -84,5 +84,5 @@ describe("POST /Engine.svc/User/modernRegister", () => {
 		expect(response.status).toBe(415);
 	});
 
-	test("GetPermanentSession ");
+	// test("GetPermanentSession ");
 });

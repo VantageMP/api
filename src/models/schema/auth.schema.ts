@@ -3,6 +3,7 @@ import { t } from "elysia";
 export const createUserSchema = t.Object({
 	email: t.String({ format: "email" }),
 	password: t.String(),
+	hwid: t.Optional(t.String()),
 	// ticket: t.Nullable(t.String()),
 });
 

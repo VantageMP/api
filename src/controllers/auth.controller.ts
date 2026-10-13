@@ -59,8 +59,8 @@ export const modernAuthenticateUser = async ({
 	body: CreateUserInput;
 	headers: HwidHeaderInput;
 }) => {
-	const whid = headers["x-hwid"];
-	const rawInput = { ...body, whid };
+	const hwid = headers["x-hwid"];
+	const rawInput = { ...body, hwid };
 	const input = Value.Parse(createUserSchema, rawInput);
 
 	return authService.authenticateUser(input);

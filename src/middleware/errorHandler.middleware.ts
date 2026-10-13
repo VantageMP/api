@@ -1,5 +1,5 @@
 import { XML } from "bun";
-import { type ErrorHandler, NotFoundError, ValidationError } from "elysia";
+import { type ErrorHandler, NotFoundError } from "elysia";
 import { EngineError } from "@/constants/error.codes";
 import { EngineException, ModernException } from "@/errors/engine.exception";
 
@@ -16,12 +16,9 @@ export function errorHandler(ctx: Parameters<ErrorHandler>[0]) {
 }
 
 function isAuthError(ctx: Parameters<ErrorHandler>[0]): boolean {
-	const { code, error } = ctx as { code: unknown; error: unknown };
+	const { error } = ctx as { code: unknown; error: unknown };
 
-	return (
-		(error instanceof Error && error.message === "INVALID_OR_EXPIRED_SESSION") ||
-		(code === "VALIDATION" && error instanceof ValidationError)
-	);
+	return error instanceof Error && error.message === "INVALID_OR_EXPIRED_SESSION";
 }
 
 function handleModernError(error: ModernException, set: ErrorSet) {

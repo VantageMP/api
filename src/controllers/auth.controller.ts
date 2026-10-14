@@ -73,6 +73,7 @@ export const getPermanentSession = async ({
 	userId: number;
 	securityToken: string;
 }) => {
+	console.log("getPermanentSession", userId, securityToken);
 	return authService.getPermanentSession(userId, securityToken);
 };
 

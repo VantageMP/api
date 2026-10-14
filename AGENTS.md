@@ -1,5 +1,3 @@
-# AGENTS.md
-
 Guidance for AI coding agents working in this repository.
 Read `.ai/CONSTITUTION.md` first. It is mandatory and takes precedence over any habit or default.
 

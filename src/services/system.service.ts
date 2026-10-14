@@ -2,7 +2,7 @@ import { count, inArray } from "drizzle-orm";
 import { MODDING_PARAMETER_KEYS, PARAMETER_KEYS } from "@/constants/system.constants";
 import { db } from "@/database";
 import { onlineUsersTable, parameterTable } from "@/database/schema";
-import type { ServerInformationResponse } from "@/models/schema/system.schema";
+import type { ModInfoResponse, ServerInformationResponse } from "@/models/schema/system.schema";
 import { toBool, toFloat, toInt, toList, toStr } from "@/utils/parameter-parsers";
 
 const getParametersMap = async (keys: string[]): Promise<Map<string, string | null>> => {
@@ -48,14 +48,14 @@ export const systemInformation = async (): Promise<ServerInformationResponse> =>
 	};
 };
 
-export const modInfo = async () => {
+export const modInfo = async (): Promise<ModInfoResponse | null> => {
 	const params = await getParametersMap(Object.values(MODDING_PARAMETER_KEYS));
 	const get = (key: string) => params.get(key);
 
 	const enabled = toBool(get(MODDING_PARAMETER_KEYS.enabled));
 
 	if (!enabled) {
-		throw new Error("MODDING_DISABLED");
+		return null;
 	}
 
 	return {

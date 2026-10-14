@@ -32,3 +32,9 @@ export interface ServerInformationResponse {
 	serverVersion: string;
 	*/
 }
+
+export interface ModInfoResponse {
+	serverID: string;
+	basePath: string;
+	features: string[];
+}

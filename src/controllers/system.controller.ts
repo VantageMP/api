@@ -6,8 +6,13 @@ export const systemInformation = async () => {
 	return result;
 };
 
-export const modInfo = async () => {
+export const modInfo = async ({ set }: { set: { status?: number | string } }) => {
 	const result = await systemService.modInfo();
+
+	if (!result) {
+		set.status = 404;
+		return null;
+	}
 
 	return result;
 };
